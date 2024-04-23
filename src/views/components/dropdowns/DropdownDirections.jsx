@@ -7,7 +7,7 @@ const DropdownDirections = () => {
         <DropdownToggle color='primary' caret>
           Drop bottom right
         </DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>

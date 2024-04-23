@@ -3,6 +3,7 @@ import useJwt from '@src/auth/jwt/useJwt'
 
 // ** Init login request
 export const doLogin = data => {
+  debugger
   return dispatch => {
     dispatch({
       type: 'LOGIN_REQUEST',

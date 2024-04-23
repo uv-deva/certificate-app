@@ -12,11 +12,10 @@ import {
   Button,
   Label,
   InputGroup,
-  CustomInput,
   Row
 } from "reactstrap"
 import { Edit2 } from 'react-feather'
-const UnknownIcon = require('../../../src/assets/images/icons/noImage.jpeg').default
+import UnknownIcon from '../../../src/assets/images/icons/noImage.jpeg'
 // ** Styles
 
 const PartnerlView = ({ open, onEdit, handleModal, modal }) => {
@@ -69,7 +68,7 @@ const PartnerlView = ({ open, onEdit, handleModal, modal }) => {
                 <FormGroup>
                     <Label for='name'>{intl.formatMessage({id:"Create Account"})}</Label>
                     <InputGroup>
-                    <CustomInput
+                    <Input
                         type='switch'
                         disabled={true}
                         value={modal?.create_account}

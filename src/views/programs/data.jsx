@@ -42,7 +42,7 @@ return [
               <DropdownToggle className='icon-btn hide-arrow' color='transparent' size='sm' caret >
                 <MoreVertical size={15} />
               </DropdownToggle>
-              <DropdownMenu right direction='up'>
+              <DropdownMenu end direction='up'>
                 {ability.can('view', "program") && <DropdownItem href={'#'} onClick={(e) => handleView(e, row)}>
                   <Eye className="cursor-pointer " style={{color:'green'}} size={20}  /> <span className='align-middle'>{intl.formatMessage({id:"View"})}</span>
                 </DropdownItem>}

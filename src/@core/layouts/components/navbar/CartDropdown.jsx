@@ -111,7 +111,7 @@ const CartDropdown = () => {
           </Badge>
         ) : null}
       </DropdownToggle>
-      <DropdownMenu right tag='ul' className='dropdown-menu-media dropdown-cart mt-0'>
+      <DropdownMenu end tag='ul' className='dropdown-menu-media dropdown-cart mt-0'>
         <li className='dropdown-menu-header'>
           <DropdownItem tag='div' className='d-flex' header>
             <h4 className='notification-title mb-0 mr-auto'>My Cart</h4>

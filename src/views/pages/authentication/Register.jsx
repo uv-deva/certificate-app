@@ -6,11 +6,11 @@ import useJwt from '@src/auth/jwt/useJwt'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { handleLogin } from '@store/actions/auth'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AbilityContext } from '@src/utility/context/Can'
 import InputPasswordToggle from '@components/input-password-toggle'
 import { Facebook, Twitter, Mail, GitHub } from 'react-feather'
-import { Row, Col, CardTitle, CardText, FormGroup, Label, Button, Form, Input, CustomInput } from 'reactstrap'
+import { Row, Col, CardTitle, CardText, FormGroup, Label, Button, Form, Input } from 'reactstrap'
 
 import '@styles/base/pages/page-auth.scss'
 
@@ -19,7 +19,7 @@ const Register = () => {
 
   const [skin, setSkin] = useSkin()
 
-  const history = useHistory()
+  const history = useNavigate()
 
   const dispatch = useDispatch()
 
@@ -203,7 +203,7 @@ const Register = () => {
                 />
               </FormGroup>
               <FormGroup>
-                <CustomInput
+                <Input
                   type='checkbox'
                   id='terms'
                   name='terms'

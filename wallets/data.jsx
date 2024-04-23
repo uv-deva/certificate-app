@@ -41,7 +41,7 @@ export const columns = (handleEdit, handleDelete, handleView) => {
               >
                 <MoreVertical size={15} />
               </DropdownToggle>
-              <DropdownMenu right direction="up">
+              <DropdownMenu end direction="up">
                 <DropdownItem href={"#"} onClick={(e) => handleView(e, row)}>
                   <Eye
                     className="cursor-pointer "

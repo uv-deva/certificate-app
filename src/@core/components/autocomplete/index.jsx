@@ -1,7 +1,7 @@
 // ** React Imports
 import { Fragment, useEffect, useState, useRef } from 'react'
 import ReactDOM from 'react-dom'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // ** Third Party Components
 import PropTypes from 'prop-types'
@@ -29,7 +29,7 @@ const Autocomplete = props => {
   const [userInput, setUserInput] = useState(props.value ? props.value : '')
 
   // ** Vars
-  const history = useHistory()
+  const history = useNavigate()
   let filteredData = []
 
   // ** Suggestion Item Click Event

@@ -10,7 +10,6 @@ import {
   Form,
   FormGroup,
   InputGroup,
-  CustomInput,
   Input,
   Label,
   UncontrolledTooltip,
@@ -59,7 +58,7 @@ const SUPPORTED_PDF_FORMATS = [
   "application/pdf"
 ]
 
-const UnknownIcon = require('@src/assets/images/icons/noImage.jpeg').default
+import UnknownIcon from '@src/assets/images/icons/noImage.jpeg'
 
 const ProgramModal = ({ open, handleModal, modal }) => {
     const intl = useIntl()
@@ -265,7 +264,7 @@ const ProgramModal = ({ open, handleModal, modal }) => {
             <Col md="9" className="pl-0">
               <InputGroup style={{zIndex:0}} >
                 
-                <CustomInput onChange={onChange} type='file' id='refImage' name='refImage' innerRef={register({ required: true })} invalid={errors.image && true} accept="image/*" />
+                <Input onChange={onChange} type='file' id='refImage' name='refImage' innerRef={register({ required: true })} invalid={errors.image && true} accept="image/*" />
                 <UncontrolledTooltip placement='right' target='image_tooltip'>
                 Upload a logo. This will be shown in the consumer app. 
                 </UncontrolledTooltip>
@@ -279,7 +278,7 @@ const ProgramModal = ({ open, handleModal, modal }) => {
           <Label for='name'>{intl.formatMessage({id:"Documents"})} <Info id="documents_tooltip" color="#45866E" size={14}/></Label>
           <InputGroup style={{zIndex:0}} >
             
-            <CustomInput multiple="multiple" type='file' id='refDocuments' name='refDocuments' innerRef={register({ required: true })} invalid={errors.refDocuments && true} accept="application/pdf" />
+            <Input multiple="multiple" type='file' id='refDocuments' name='refDocuments' innerRef={register({ required: true })} invalid={errors.refDocuments && true} accept="application/pdf" />
             <UncontrolledTooltip placement='right' target='documents_tooltip'>
             Upload any document.
             </UncontrolledTooltip>
@@ -339,7 +338,7 @@ const ProgramModal = ({ open, handleModal, modal }) => {
           <Label for='name'>Status <Info id="status_tooltip" color="#45866E" size={14}/></Label>
           <InputGroup className="shadow-none">
             
-            <CustomInput
+            <Input
                 
                 type='switch'
                 id='status'

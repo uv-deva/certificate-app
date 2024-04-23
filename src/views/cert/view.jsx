@@ -12,11 +12,10 @@ import {
   Badge,
   Label,
   InputGroup,
-  CustomInput,
   Row
 } from "reactstrap"
 import { Edit2 } from 'react-feather'
-const UnknownIcon = require('../../../src/assets/images/icons/noImage.jpeg').default
+import UnknownIcon from '../../../src/assets/images/icons/noImage.jpeg'
 // ** Styles
 
 const CertificateView = ({ open, onEdit, handleModal, modal }) => {
@@ -161,7 +160,7 @@ const CertificateView = ({ open, onEdit, handleModal, modal }) => {
                 <FormGroup>
                 <Label for='name'>{intl.formatMessage({id:"Trained"})}</Label>
                 <InputGroup>
-                <CustomInput
+                <Input
                     
                     type='switch'
                     name="process_step"
@@ -178,7 +177,7 @@ const CertificateView = ({ open, onEdit, handleModal, modal }) => {
               <FormGroup>
                 <Label for='name'>{intl.formatMessage({id:"Paid"})}</Label>
                 <InputGroup>
-                <CustomInput
+                <Input
                     
                     type='switch'
                     name="process_step"
@@ -201,7 +200,7 @@ const CertificateView = ({ open, onEdit, handleModal, modal }) => {
               <FormGroup>
                 <Label for='name'>{intl.formatMessage({id:"Status"})}</Label>
                 <InputGroup>
-                <CustomInput
+                <Input
                     id="url"
                     type='switch'
                     name="process_step"

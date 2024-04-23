@@ -616,9 +616,9 @@ const DropdownDirections = () => {
     <div className='demo-inline-spacing'>
       <UncontrolledButtonDropdown>
         <DropdownToggle color='primary' caret>
-          Drop bottom right
+          Drop bottom end
         </DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>Option 1</DropdownItem>
           <DropdownItem href='/' tag='a'>Option 2</DropdownItem>
           <DropdownItem href='/' tag='a'>Option 3</DropdownItem>
@@ -634,9 +634,9 @@ const DropdownDirections = () => {
           <DropdownItem href='/' tag='a'>Option 3</DropdownItem>
         </DropdownMenu>
       </UncontrolledButtonDropdown>
-      <UncontrolledButtonDropdown direction='right'>
+      <UncontrolledButtonDropdown direction='end'>
         <DropdownToggle color='primary' caret>
-          Drop Right
+          Drop end
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem href='/' tag='a'>Option 1</DropdownItem>
@@ -752,7 +752,7 @@ const DropdownVariations = () => {
         <DropdownToggle className='dropdown-toggle-split' color='primary' caret>
           {activeIcon}
         </DropdownToggle>
-        <DropdownMenu tag='ul' right>
+        <DropdownMenu tag='ul' end>
           {renderIconItem}
         </DropdownMenu>
       </UncontrolledButtonDropdown>

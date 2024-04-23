@@ -1,7 +1,7 @@
 import { isUserLoggedIn } from '@utils'
 import { useSkin } from '@hooks/useSkin'
 import { ChevronLeft } from 'react-feather'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { Row, Col, CardTitle, CardText, Form, FormGroup, Label, Input, Button } from 'reactstrap'
 import '@styles/base/pages/page-auth.scss'
 
@@ -56,7 +56,7 @@ const ForgotPassword = () => {
       </div>
     )
   } else {
-    return <Redirect to='/' />
+    return <Navigate to='/' />
   }
 }
 

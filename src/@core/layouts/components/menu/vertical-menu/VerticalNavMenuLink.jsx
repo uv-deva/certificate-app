@@ -107,6 +107,7 @@ const VerticalNavMenuLink = ({
             e.preventDefault()
           }
           parentItem ? resetActiveGroup(item.navLink) : resetActiveAndOpenGroups()
+          console.log(parentItem)
         }}
       >
         {item.icon}

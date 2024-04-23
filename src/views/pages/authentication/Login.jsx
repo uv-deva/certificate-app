@@ -5,7 +5,7 @@ import { useSkin } from "@hooks/useSkin";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { isObjEmpty } from "@utils";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import InputPasswordToggle from "@components/input-password-toggle";
 import {
   Row,
@@ -16,7 +16,7 @@ import {
   Input,
   FormGroup,
   Label,
-  // CustomInput,
+  // Input,
   Button,
 } from "reactstrap";
 
@@ -38,7 +38,6 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const ability = useContext(AbilityContext);
-  const history = useHistory();
   const {
     register,
     formState: { errors },
@@ -47,6 +46,10 @@ const Login = (props) => {
   const source = skin === "dark" ? loginDark : loginArtWork;
 
   const onSubmit = (data) => {
+    data = {
+      "login-email": email,
+      "login-password": password
+    }
     if (isObjEmpty(errors)) {
       dispatch(doLogin(data));
     }

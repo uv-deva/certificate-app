@@ -32,5 +32,20 @@
   "View" :"View",
   "Edit" :"Edit",
   "Delete" :"Delete",
-  "Add Route":"Add"
+  "Add Route":"Add",
+  "Services (web3)": "Services (web3)",
+  "Logout": "Logout",
+  "Help": "Help",
+  "Wallets": "Wallets",
+  "Access (web3)": "Access (web3)",
+  "Certificates": "Certificates",
+  "Programs" : "Programs",
+  "Accounts": "Accounts",
+  "Web3 - Services": "Web3 - Services",
+  "Yes": "Yes",
+  "No": "No",
+  "Account": "Account",
+  "Add Account": "Add Account",
+  "Add Certificate": "Add Certificate",
+  "Add Program": "Add Program"
 }

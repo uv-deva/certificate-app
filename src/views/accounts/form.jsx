@@ -9,7 +9,6 @@ import {
   Form,
   FormGroup,
   InputGroup,
-  CustomInput,
   Input,
   Label,
   UncontrolledTooltip,
@@ -39,6 +38,7 @@ import { selectUserData } from '@src/redux/selectors/auth'
 import InputPasswordToggle from '@components/input-password-toggle'
 import classnames from 'classnames'
 import Select from 'react-select'
+import UnknownIcon from '@src/assets/images/icons/noImage.jpeg'
 
 const FILE_SIZE = 1024 * 1024 * 1024
 const SUPPORTED_FORMATS = [
@@ -53,9 +53,6 @@ const SUPPORTED_PDF_FORMATS = [
   "text/pdf",
   "application/pdf"
 ]
-
-const UnknownIcon = require('@src/assets/images/icons/noImage.jpeg').default
-
 
 const typeOptions = {
   administrator : [
@@ -405,7 +402,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
               <Col md="9" className="pl-0">
                 <InputGroup>
 
-                  <CustomInput onChange={onChange} type='file' id='refImage' name='refImage' innerRef={register({ required: true })} invalid={errors.refImage && true} />
+                  <Input onChange={onChange} type='file' id='refImage' name='refImage' innerRef={register({ required: true })} invalid={errors.refImage && true} />
                   <UncontrolledTooltip placement='right' target='img_tooltip'>
                     Upload a logo of the partner.
                   </UncontrolledTooltip>
@@ -419,7 +416,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
             <Label for='refDocuments'>{intl.formatMessage({ id: "Document" })} <Info id="doc_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
-              <CustomInput multiple="multiple" type='file' id='refDocuments' name='refDocuments' innerRef={register({ required: true })} invalid={errors.refDocuments && true} accept="application/pdf" />
+              <Input multiple="multiple" type='file' id='refDocuments' name='refDocuments' innerRef={register({ required: true })} invalid={errors.refDocuments && true} accept="application/pdf" />
               <UncontrolledTooltip placement='right' target='doc_tooltip'>
                 Upload any document<br /> about the partner
               </UncontrolledTooltip>

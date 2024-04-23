@@ -64,7 +64,7 @@ const DropdownSizes = () => {
                 Large
               </Button>
               <DropdownToggle className='dropdown-toggle-split' color='primary' caret size='lg'></DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem href='/' tag='a'>
                   Option 1
                 </DropdownItem>
@@ -79,7 +79,7 @@ const DropdownSizes = () => {
             <UncontrolledButtonDropdown>
               <Button color='primary'>Default</Button>
               <DropdownToggle className='dropdown-toggle-split' color='primary' caret></DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem href='/' tag='a'>
                   Option 1
                 </DropdownItem>
@@ -96,7 +96,7 @@ const DropdownSizes = () => {
                 Small
               </Button>
               <DropdownToggle className='dropdown-toggle-split' color='primary' caret></DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem href='/' tag='a'>
                   Option 1
                 </DropdownItem>

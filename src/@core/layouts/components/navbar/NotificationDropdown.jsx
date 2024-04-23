@@ -12,7 +12,7 @@ import {
   Button,
   Badge,
   Media,
-  CustomInput,
+  Input,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
@@ -52,7 +52,7 @@ const NotificationDropdown = () => {
     },
     {
       title: <h6 className='font-weight-bolder mr-auto mb-0'>System Notifications</h6>,
-      switch: <CustomInput type='switch' id='primary' name='primary' inline defaultChecked />
+      switch: <Input type='switch' id='primary' name='primary' inline defaultChecked />
     },
     {
       avatarIcon: <X size={14} />,
@@ -153,7 +153,7 @@ const NotificationDropdown = () => {
           5
         </Badge>
       </DropdownToggle>
-      <DropdownMenu tag='ul' right className='dropdown-menu-media mt-0'>
+      <DropdownMenu tag='ul' end className='dropdown-menu-media mt-0'>
         <li className='dropdown-menu-header'>
           <DropdownItem className='d-flex' tag='div' header>
             <h4 className='notification-title mb-0 mr-auto'>Notifications</h4>

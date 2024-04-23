@@ -12,8 +12,7 @@ import {
   InputGroup,
   Input,
   Label,
-  UncontrolledTooltip,
-  CustomInput 
+  UncontrolledTooltip 
 } from 'reactstrap'
 
 // ** Styles
@@ -34,6 +33,7 @@ import {
   selectUpdateErrors
 } from '../../redux/selectors/table'
 import Select from 'react-select'
+import UnknownIcon from '@src/assets/images/icons/noImage.jpeg'
 
 const FILE_SIZE = 1024 * 1024 * 1024
 const SUPPORTED_FORMATS = [
@@ -48,8 +48,6 @@ const SUPPORTED_PDF_FORMATS = [
   "text/pdf",
   "application/pdf"
 ]
-
-const UnknownIcon = require('@src/assets/images/icons/noImage.jpeg').default
 
 const CertificateModal = ({ open, handleModal, modal }) => {
   const intl = useIntl()

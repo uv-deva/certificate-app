@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useSkin } from '@hooks/useSkin'
 
 const BlankLayout = ({ children, ...rest }) => {
+  debugger
   // ** Hooks
   const [skin, setSkin] = useSkin()
 

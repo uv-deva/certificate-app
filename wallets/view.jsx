@@ -12,12 +12,11 @@ import {
   Badge,
   Label,
   InputGroup,
-  CustomInput,
+  Input,
   Row,
 } from "reactstrap";
 import { Edit2 } from "react-feather";
-const UnknownIcon =
-  require("../../../src/assets/images/icons/noImage.jpeg").default;
+import UnknownIcon from "../../../src/assets/images/icons/noImage.jpeg"
 // ** Styles
 
 const WalletView = ({ open, onEdit, handleModal, modal }) => {
@@ -173,7 +172,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
             <FormGroup>
               <Label for="name">{intl.formatMessage({ id: "Status" })}</Label>
               <InputGroup>
-                <CustomInput
+                <Input
                   id="url"
                   type="switch"
                   name="process_step"

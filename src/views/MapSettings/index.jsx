@@ -6,7 +6,7 @@ import { AbilityContext } from '../../utility/context/Can'
 
 // ** Custom Components
 import Breadcrumbs from '@components/breadcrumbs'
-import MapModal from "../../components/common/MapModal.js"
+import MapModal from "../../components/common/MapModal"
 import TableWithButtons from '../../components/Tables/index'
 import { useDispatch, useSelector } from 'react-redux'
 import {

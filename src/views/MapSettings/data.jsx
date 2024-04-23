@@ -49,7 +49,7 @@ export const columns = (handleEdit, handleDelete, handleView, handleMapModalOpen
               <DropdownToggle className='icon-btn hide-arrow' color='transparent' size='sm' caret >
                 <MoreVertical size={15} />
               </DropdownToggle>
-              <DropdownMenu right direction='up' className="dropdown-menu" aria-labelledby={`dropdownMenuButton`}>
+              <DropdownMenu end direction='up' className="dropdown-menu" aria-labelledby={`dropdownMenuButton`}>
                 {
                   waypoints.length > 0 ? (
                     <DropdownItem onClick={(e) => handleEdit(e, row)} >Edit</DropdownItem>

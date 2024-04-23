@@ -9,7 +9,6 @@ import {
   Form,
   FormGroup,
   InputGroup,
-  CustomInput,
   Input,
   Label,
   UncontrolledTooltip,
@@ -55,7 +54,7 @@ const SUPPORTED_PDF_FORMATS = [
 
 import { searchTable } from '../../redux/actions/routes'
 
-const UnknownIcon = require('@src/assets/images/icons/noImage.jpeg').default
+import UnknownIcon from '@src/assets/images/icons/noImage.jpeg'
 
 
 const typeOptions = {
@@ -268,7 +267,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           <Label for='name'>Status <Info id="status_tooltip" color="#45866E" size={14}/></Label>
           <InputGroup className="shadow-none">
             
-            <CustomInput
+            <Input
                 
                 type='switch'
                 id='status'

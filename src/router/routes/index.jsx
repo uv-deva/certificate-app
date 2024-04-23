@@ -9,9 +9,9 @@ const TemplateTitle = '%s - Admin'
 const DefaultRoute = '/accounts'
 
 // ** Merge Routes
-const Routes = [
+const RoutesList = [
   ...AppRoutes,
   ...PagesRoutes
 ]
 
-export { DefaultRoute, TemplateTitle, Routes }
+export { DefaultRoute, TemplateTitle, RoutesList }

@@ -9,7 +9,7 @@ import {
   Form,
   FormGroup,
   InputGroup,
-  CustomInput,
+  Input,
   Input,
   Label,
   UncontrolledTooltip,
@@ -45,7 +45,7 @@ const SUPPORTED_FORMATS = ["image/jpg", "image/jpeg", "image/gif", "image/png"];
 const PDF_FILE_SIZE = 1024 * 1024 * 10240;
 const SUPPORTED_PDF_FORMATS = ["text/pdf", "application/pdf"];
 
-const UnknownIcon = require("@src/assets/images/icons/noImage.jpeg").default;
+import UnknownIcon from "@src/assets/images/icons/noImage.jpeg"
 
 const WalletModal = ({ open, handleModal, modal }) => {
   const intl = useIntl();
@@ -310,7 +310,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
               </Col>
               <Col md="9" className="pl-0">
                 <InputGroup style={{ zIndex: 0 }}>
-                  <CustomInput
+                  <Input
                     onChange={onChange}
                     type="file"
                     id="refImage"
@@ -338,7 +338,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
               <Info id="documents_tooltip" color="#45866E" size={14} />
             </Label>
             <InputGroup style={{ zIndex: 0 }}>
-              <CustomInput
+              <Input
                 multiple="multiple"
                 type="file"
                 id="refDocuments"
@@ -420,7 +420,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
               Status <Info id="status_tooltip" color="#45866E" size={14} />
             </Label>
             <InputGroup className="shadow-none">
-              <CustomInput
+              <Input
                 type="switch"
                 id="status"
                 name="status"

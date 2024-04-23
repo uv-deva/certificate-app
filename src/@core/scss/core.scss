@@ -1,3 +1,4 @@
+@import "node_modules/bootstrap/scss/bootstrap";
 @import './base/bootstrap.scss';
 @import './base/bootstrap-extended.scss';
 @import './base/colors.scss';
@@ -11,3 +12,7 @@
 
 // React Specific
 @import 'react/index';
+
+@import './base/custom.scss'
+
+

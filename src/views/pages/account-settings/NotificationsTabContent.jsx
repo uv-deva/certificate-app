@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Row, Col, CustomInput, Button } from 'reactstrap'
+import { Row, Col, Input, Button } from 'reactstrap'
 
 const NotificationsTabContent = ({ data }) => {
   const [followMe, setFollowMe] = useState(data.followMe)
@@ -13,7 +13,7 @@ const NotificationsTabContent = ({ data }) => {
     <Row>
       <h6 className='section-label mx-1 mb-2'>Activity</h6>
       <Col sm='12' className='mb-2'>
-        <CustomInput
+        <Input
           type='switch'
           id='commentOnArticle'
           checked={commentOnArticle}
@@ -23,7 +23,7 @@ const NotificationsTabContent = ({ data }) => {
         />
       </Col>
       <Col sm='12' className='mb-2'>
-        <CustomInput
+        <Input
           type='switch'
           id='answerOnForm'
           checked={answerOnForm}
@@ -33,7 +33,7 @@ const NotificationsTabContent = ({ data }) => {
         />
       </Col>
       <Col sm='12' className='mb-2'>
-        <CustomInput
+        <Input
           type='switch'
           id='followMe'
           checked={followMe}
@@ -44,7 +44,7 @@ const NotificationsTabContent = ({ data }) => {
       </Col>
       <h6 className='section-label mx-1 mt-2'>Application</h6>
       <Col sm='12' className='mt-1 mb-2'>
-        <CustomInput
+        <Input
           type='switch'
           id='newAnnouncements'
           checked={newAnnouncements}
@@ -54,7 +54,7 @@ const NotificationsTabContent = ({ data }) => {
         />
       </Col>
       <Col sm='12' className='mb-2'>
-        <CustomInput
+        <Input
           type='switch'
           id='productUpdates'
           checked={productUpdates}
@@ -64,7 +64,7 @@ const NotificationsTabContent = ({ data }) => {
         />
       </Col>
       <Col sm='12' className='mb-75'>
-        <CustomInput
+        <Input
           type='switch'
           id='blogDigest'
           checked={blogDigest}

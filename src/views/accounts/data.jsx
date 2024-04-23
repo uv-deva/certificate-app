@@ -46,7 +46,7 @@ return [
               <DropdownToggle className='icon-btn hide-arrow' color='transparent' size='sm' caret >
                 <MoreVertical size={15} />
               </DropdownToggle>
-              <DropdownMenu right direction='up'>
+              <DropdownMenu end direction='up'>
                 <div style={{inset: '0px 0px auto auto'}}>
                   <DropdownItem href={'#'} onClick={(e) => handleView(e, row)}>
                     <Eye className="cursor-pointer " style={{color:'green'}} size={20}  /> <span className='align-middle'>{intl.formatMessage({id:"View"})}</span>
@@ -67,7 +67,7 @@ return [
   },
   {
     name: 'logo',
-    selector: 'image',
+    selector: (row) => row.username,
     sortable: true,
     minWidth:'50px',
     maxWidth:'70px',
@@ -84,7 +84,7 @@ return [
   },  
   {
     name: 'Account',
-    selector: 'username',
+    selector: (row) => row.username,
     sortable: true,
     minWidth:'120px',
     cell: row => (
@@ -109,7 +109,7 @@ return [
   },
   {
     name: 'Name',
-    selector: 'first_name',
+    selector: (row) => row.first_name,
     sortable: true,
     minWidth:'300px',
     cell: row => (
@@ -123,7 +123,7 @@ return [
   },
   {
     name: 'Groups',
-    selector: 'roles',
+    selector: (row) => row.username,
     cell: row => (
       <div className='d-flex align-items-center'>
         {row.groups.map((o) => o.name)}
@@ -132,7 +132,7 @@ return [
   },
   {
     name: 'Description',
-    selector: 'description',
+    selector: (row) => row.description,
     sortable: true, //.substring(0, 7);
     minWidth: '200px',
     cell: row => <div className='d-flex align-items-center word-break text-truncate '>
@@ -155,7 +155,7 @@ return [
   },
   {
     name: 'Document',
-    selector: 'refDocument',
+    selector: (row) => row.refDocuments,
     cell: row => (
       <div className='d-flex align-items-center word-break text-truncate '>
         

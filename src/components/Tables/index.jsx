@@ -156,7 +156,7 @@ const DataTableWithButtons = ({
                   
                   <span className='align-middle ml-50'>{intl.formatMessage({id:filter.label})}</span>
                 </DropdownToggle>
-                <DropdownMenu right>
+                <DropdownMenu end>
                   
                   {filter.values.map(function(val, i) {
                     return  <DropdownItem key={i.label} className='w-100' onClick={() => onFilter({[filter.id]:val.value})}>
@@ -234,7 +234,7 @@ console.log(data)
                     
                     <span className='align-middle ml-50'>{perPage}</span>
                   </DropdownToggle>
-                  <DropdownMenu right>
+                  <DropdownMenu end>
                     <DropdownItem className='w-100' onClick={() => setPageSize(20)}>
                       <span className='align-middle ml-50'>20</span>
                     </DropdownItem>

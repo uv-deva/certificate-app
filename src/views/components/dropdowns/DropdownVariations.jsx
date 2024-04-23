@@ -5,7 +5,7 @@ import {
   FormGroup,
   Label,
   Input,
-  CustomInput,
+  Input,
   DropdownMenu,
   DropdownItem,
   DropdownToggle,
@@ -98,7 +98,7 @@ const DropdownVariations = () => {
         <DropdownToggle className='dropdown-toggle-split' color='primary' caret>
           {activeIcon}
         </DropdownToggle>
-        <DropdownMenu tag='div' right>
+        <DropdownMenu tag='div' end>
           {renderIconItem}
         </DropdownMenu>
       </UncontrolledButtonDropdown>
@@ -124,7 +124,7 @@ const DropdownVariations = () => {
               <Input type='password' placeholder='Password' name='ddPassword' id='ddPassword' />
             </FormGroup>
             <FormGroup>
-              <CustomInput type='checkbox' name='ddCheck' id='ddCheck' label='Remember Me' />
+              <Input type='checkbox' name='ddCheck' id='ddCheck' label='Remember Me' />
             </FormGroup>
             <Button color='primary' type='submit'>
               Submit

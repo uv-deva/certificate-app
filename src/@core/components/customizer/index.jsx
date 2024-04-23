@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Select from 'react-select'
 import classnames from 'classnames'
 import { Settings, X } from 'react-feather'
-import { CustomInput, FormGroup } from 'reactstrap'
+import { Input, FormGroup } from 'reactstrap'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { selectThemeColors } from '@utils'
 
@@ -79,7 +79,7 @@ const Customizer = props => {
       }
 
       return (
-        <CustomInput
+        <Input
           key={index}
           type='radio'
           id={radio.name}
@@ -141,7 +141,7 @@ const Customizer = props => {
       }
 
       return (
-        <CustomInput
+        <Input
           key={index}
           type='radio'
           id={radio.name}
@@ -178,7 +178,7 @@ const Customizer = props => {
       const marginCondition = index !== footerTypeArr.length - 1
 
       return (
-        <CustomInput
+        <Input
           key={index}
           type='radio'
           id={`footer-${radio.name}`}
@@ -231,7 +231,7 @@ const Customizer = props => {
           <FormGroup className='mb-2'>
             <p className='font-weight-bold'>Content Width</p>
             <div className='d-flex'>
-              <CustomInput
+              <Input
                 type='radio'
                 id='full-width'
                 className='mr-1'
@@ -239,7 +239,7 @@ const Customizer = props => {
                 checked={contentWidth === 'full'}
                 onChange={() => setContentWidth('full')}
               />
-              <CustomInput
+              <Input
                 type='radio'
                 id='boxes'
                 label='Boxed'
@@ -252,7 +252,7 @@ const Customizer = props => {
           <FormGroup className='mb-2'>
             <div className='d-flex'>
               <p className='font-weight-bold mr-auto mb-0'>RTL</p>
-              <CustomInput type='switch' id='rtl' name='RTL' checked={isRtl} onChange={() => setIsRtl(!isRtl)} />
+              <Input type='switch' id='rtl' name='RTL' checked={isRtl} onChange={() => setIsRtl(!isRtl)} />
             </div>
           </FormGroup>
 
@@ -279,7 +279,7 @@ const Customizer = props => {
           <p className='font-weight-bold'>Menu Layout</p>
           <FormGroup className='mb-2'>
             <div className='d-flex align-items-center'>
-              <CustomInput
+              <Input
                 type='radio'
                 id='vertical-layout'
                 label='Vertical'
@@ -287,7 +287,7 @@ const Customizer = props => {
                 onChange={() => setLayout('vertical')}
                 className='mr-1'
               />
-              <CustomInput
+              <Input
                 type='radio'
                 id='horizontal-layout'
                 label='Horizontal'
@@ -300,7 +300,7 @@ const Customizer = props => {
             <FormGroup className='mb-2'>
               <div className='d-flex align-items-center'>
                 <p className='font-weight-bold mr-auto mb-0'>Menu Collapsed</p>
-                <CustomInput
+                <Input
                   type='switch'
                   id='menu-collapsed'
                   name='menu-collapsed'
@@ -314,7 +314,7 @@ const Customizer = props => {
           <FormGroup className='mb-2'>
             <div className='d-flex align-items-center'>
               <p className='font-weight-bold mr-auto mb-0'>Menu Hidden</p>
-              <CustomInput
+              <Input
                 type='switch'
                 id='menu-hidden'
                 name='menu-hidden'

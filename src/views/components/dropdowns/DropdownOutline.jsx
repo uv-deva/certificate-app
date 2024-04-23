@@ -28,7 +28,7 @@ const DropdownOutline = () => {
           Secondary
         </Button>
         <DropdownToggle outline className='dropdown-toggle-split' color='secondary' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>
@@ -89,7 +89,7 @@ const DropdownOutline = () => {
           Warning
         </Button>
         <DropdownToggle outline className='dropdown-toggle-split' color='warning' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>

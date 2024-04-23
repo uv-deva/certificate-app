@@ -14,8 +14,10 @@ import { doLogout } from '@store/actions/auth'
 
 // ** Third Party Components
 import {useIntl} from 'react-intl'
-import { UncontrolledDropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap'
+import { UncontrolledDropdown, DropdownToggle, DropdownItem } from 'reactstrap'
 import { Settings, Power, HelpCircle } from 'react-feather'
+import { DropdownMenu } from 'react-bootstrap';
+
 
 // ** Default Avatar Image
 import defaultAvatar from '@src/assets/images/avatars/avatar-blank.png'
@@ -41,11 +43,11 @@ const UserDropdown = () => {
         </div>
         <Avatar img={userAvatar} imgHeight='40' imgWidth='40' status='online' />
       </DropdownToggle>
-      <DropdownMenu right>
+      <DropdownMenu end>
         
         <DropdownItem tag={Link} to='/pages/account-settings'>
           <Settings size={13} className='mr-75' />
-          <span className='align-middle'>{intl.formatMessage({id:" Settings"})}</span>
+          <span className='align-middle'>{intl.formatMessage({id:"Settings"})}</span>
         </DropdownItem>
         <DropdownItem href='https://api.lakoma.com/media/documents/help.pdf' target='_blank'>
           <HelpCircle size={13} className='mr-75' />

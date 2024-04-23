@@ -1,5 +1,5 @@
 // ** React Imports
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 // ** Third Party Components
 import classnames from 'classnames'
@@ -28,7 +28,6 @@ const VerticalNavMenuGroup = ({
 }) => {
   // ** Current Val
   const currentURL = useLocation().pathname
-  const history = useHistory()
   // ** Toggles Open Group
   const toggleOpenGroup = (item, parentItem) => {
     let openArr = groupOpen
@@ -100,7 +99,7 @@ const VerticalNavMenuGroup = ({
       return null
     }
   }
-
+  console.log(item)
   return (
     <li
       className={classnames('nav-item has-sub', {
@@ -132,7 +131,9 @@ const VerticalNavMenuGroup = ({
             groupOpen={groupOpen}
             setGroupOpen={setGroupOpen}
             toggleActiveGroup={toggleActiveGroup}
-            parentItem={item}
+            parentItem={() => {
+              console.log("item",item);
+              item}}
             menuCollapsed={menuCollapsed}
             menuHover={menuHover}
             routerProps={routerProps}

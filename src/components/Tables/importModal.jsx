@@ -9,7 +9,7 @@ import {
   Form,
   FormGroup,
   InputGroup,
-  CustomInput,
+  Input,
   FormText,
   Label,
   UncontrolledTooltip
@@ -129,7 +129,7 @@ const ImportModal = ({ open, handleModal, importType, sampleImportFile }) => {
           <Label for='name'>{intl.formatMessage({id:"Import File"})} <Info id="name_tooltip" color="#45866E" size={14}/></Label>
           <InputGroup style={{zIndex:0}} >
             
-            <CustomInput type='file' id='file' name='file' innerRef={register({ required: true })} invalid={errors.file && true} accept="*/csv" />
+            <Input type='file' id='file' name='file' innerRef={register({ required: true })} invalid={errors.file && true} accept="*/csv" />
             <UncontrolledTooltip placement='right' target='name_tooltip'>
             {intl.formatMessage({id:"Select csv file for the material."})}
             </UncontrolledTooltip>

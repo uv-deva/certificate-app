@@ -6,7 +6,7 @@ const DropdownSplit = () => {
       <UncontrolledButtonDropdown>
         <Button color='primary'>Primary</Button>
         <DropdownToggle className='dropdown-toggle-split' color='primary' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>
@@ -25,7 +25,7 @@ const DropdownSplit = () => {
       <UncontrolledButtonDropdown>
         <Button color='secondary'>Secondary</Button>
         <DropdownToggle className='dropdown-toggle-split' color='secondary' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>
@@ -44,7 +44,7 @@ const DropdownSplit = () => {
       <UncontrolledButtonDropdown>
         <Button color='success'>Success</Button>
         <DropdownToggle className='dropdown-toggle-split' color='success' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem header>Header</DropdownItem>
           <DropdownItem href='/' tag='a'>
             Option 1
@@ -61,7 +61,7 @@ const DropdownSplit = () => {
       <UncontrolledButtonDropdown>
         <Button color='danger'>Danger</Button>
         <DropdownToggle className='dropdown-toggle-split' color='danger' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>
@@ -80,7 +80,7 @@ const DropdownSplit = () => {
       <UncontrolledButtonDropdown>
         <Button color='warning'>Warning</Button>
         <DropdownToggle className='dropdown-toggle-split' color='warning' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>
@@ -99,7 +99,7 @@ const DropdownSplit = () => {
       <UncontrolledButtonDropdown>
         <Button color='info'>Info</Button>
         <DropdownToggle className='dropdown-toggle-split' color='info' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>
@@ -118,7 +118,7 @@ const DropdownSplit = () => {
       <UncontrolledButtonDropdown>
         <Button color='dark'>Dark</Button>
         <DropdownToggle className='dropdown-toggle-split' color='dark' caret></DropdownToggle>
-        <DropdownMenu right>
+        <DropdownMenu end>
           <DropdownItem href='/' tag='a'>
             Option 1
           </DropdownItem>

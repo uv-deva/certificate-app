@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react'
 import classnames from 'classnames'
 import { useForm, Controller } from 'react-hook-form'
-import { Button, Media, Label, Row, Col, Input, FormGroup, Alert, Form, InputGroup, CustomInput,  UncontrolledTooltip} from 'reactstrap'
+import { Button, Media, Label, Row, Col, Input, FormGroup, Alert, Form, InputGroup,  UncontrolledTooltip} from 'reactstrap'
 import { CreditCard, Info } from 'react-feather'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/auth' 
@@ -135,7 +135,7 @@ const GeneralTabs = ({ data }) => {
               <Label for='name'>Public <Info id="public_tooltip" color="#45866E" size={14} /></Label>
               <InputGroup className="shadow-none">
                 
-                <CustomInput
+                <Input
                     type='switch'
                     id='public'
                     name='public'
@@ -221,7 +221,7 @@ const GeneralTabs = ({ data }) => {
           <Col sm='6'>
             <FormGroup>
               <Label for='language'>{intl.formatMessage({id:"Language"})}</Label>
-              <CustomInput
+              <Input
                 type='select'
                 id='language'
                 name='language'
@@ -238,7 +238,7 @@ const GeneralTabs = ({ data }) => {
               <option value="de">
                 {intl.formatMessage({id:"German"})}
               </option>
-                </CustomInput>
+                </Input>
             </FormGroup>
           </Col>
           {/* <Col sm='6'>

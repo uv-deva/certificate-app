@@ -32,7 +32,7 @@ const IntlDropdown = () => {
         />
         <span className='selected-language'>{langObj[locale]}</span>
       </DropdownToggle>
-      <DropdownMenu className='mt-0' right>
+      <DropdownMenu className='mt-0' end>
         <DropdownItem href='/' tag='a' onClick={e => handleLangUpdate(e, 'en')}>
           <ReactCountryFlag className='country-flag' countryCode='us' svg />
           <span className='ml-1'>{intl.formatMessage({id:"English"})}</span>

@@ -80,7 +80,7 @@ export const columns = (handleEdit, handleDelete, handleView) => {
               <DropdownToggle className="icon-btn hide-arrow" color='transparent' size='sm' caret>
                 <MoreVertical size={15} />
               </DropdownToggle>
-               <DropdownMenu right direction='up' className="dropdown-menu" aria-labelledby={`dropdownMenuButton`}>
+               <DropdownMenu end direction='up' className="dropdown-menu" aria-labelledby={`dropdownMenuButton`}>
                <div style={{inset: '0px 0px auto auto'}}>
                   {ability.can('register', "scenario") && <DropdownItem onClick={(e) => handleRegistration(e, row)} >{!row.missionControlStatus ? "Register" : "Unregister"}</DropdownItem>}
                   {ability.can('change', "scenario") && canEdit && <DropdownItem onClick={(e) => handleEdit(e, row)} >Edit</DropdownItem>}

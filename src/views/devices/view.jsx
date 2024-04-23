@@ -14,7 +14,7 @@ import {
   Row
 } from "reactstrap"
 import { Edit2 } from 'react-feather'
-const UnknownIcon = require('../../../src/assets/images/icons/noImage.jpeg').default
+import UnknownIcon from '../../../src/assets/images/icons/noImage.jpeg'
 // ** Styles
 
 const DeviceView = ({ open, onEdit, handleModal, modal }) => {
