@@ -59,7 +59,7 @@ const ImportModal = ({ open, handleModal, importType, sampleImportFile }) => {
         })
         .test(
           "fileSize",
-          intl.formatMessage({id:"File too large"}),
+          "File too large",
           value => {
             let valid = true
             if (!value || value?.length <= 0) return valid
@@ -68,7 +68,7 @@ const ImportModal = ({ open, handleModal, importType, sampleImportFile }) => {
         })
         .test(
           "fileFormat",
-          intl.formatMessage({id:"Unsupported Format, accepts csv"}),
+          "Unsupported Format, accepts csv",
           value => {
             let valid = true
             if (!value || value?.length <= 0) return valid

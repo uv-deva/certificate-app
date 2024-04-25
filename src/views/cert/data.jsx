@@ -80,13 +80,13 @@ return [
             </DropdownToggle>
             <DropdownMenu end direction='up'>
               {ability.can('view', "certificate") && <DropdownItem href={'#'} onClick={(e) => handleView(e, row)}>
-                <Eye className="cursor-pointer " style={{ color: 'green' }} size={20} /> <span className='align-middle'>{intl.formatMessage({ id: "View" })}</span>
+                <Eye className="cursor-pointer " style={{ color: 'green' }} size={20} /> <span className='align-middle'>{"View"}</span>
               </DropdownItem>}
               {/* {ability.can('change', "certificate") && <DropdownItem href="#" onClick={(e) => handleEdit(e, row)} >
-                <Edit2 className="cursor-pointer" style={{ color: 'green' }} size={20} /> <span className='align-middle'>{intl.formatMessage({ id: "Edit" })}</span>
+                <Edit2 className="cursor-pointer" style={{ color: 'green' }} size={20} /> <span className='align-middle'>{"Edit" })}</span>
               </DropdownItem>} */}
               {ability.can('delete', "certificate") && <DropdownItem href="#" onClick={(e) => handleDelete(e, row)} >
-                <Trash2 className="cursor-pointer " style={{ color: 'red' }} size={20} /> <span className='align-middle'>{intl.formatMessage({ id: "Delete" })}</span>
+                <Trash2 className="cursor-pointer " style={{ color: 'red' }} size={20} /> <span className='align-middle'>{"Delete"}</span>
               </DropdownItem>}
             </DropdownMenu>
           </UncontrolledDropdown>

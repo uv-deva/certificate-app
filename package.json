@@ -19,7 +19,7 @@
     "@fullcalendar/react": "6.1.11",
     "@fullcalendar/timegrid": "5.7.2",
     "@fullcalendar/timeline": "5.7.2",
-    "@hookform/resolvers": "3.3.4",
+    "@hookform/resolvers": "^3.3.4",
     "@mdi/js": "^7.4.47",
     "@metamask/sdk": "^0.18.2",
     "@metamask/sdk-react": "^0.18.0",
@@ -113,7 +113,7 @@
     "wnumb": "1.2.0",
     "xlsx": "0.16.2",
     "yarn": "1.21.1",
-    "yup": "0.32.8"
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

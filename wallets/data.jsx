@@ -49,7 +49,7 @@ export const columns = (handleEdit, handleDelete, handleView) => {
                     size={20}
                   />{" "}
                   <span className="align-middle">
-                    {intl.formatMessage({ id: "View" })}
+                    {"View"}
                   </span>
                 </DropdownItem>
                 <DropdownItem href="#" onClick={(e) => handleEdit(e, row)}>
@@ -59,7 +59,7 @@ export const columns = (handleEdit, handleDelete, handleView) => {
                     size={20}
                   />{" "}
                   <span className="align-middle">
-                    {intl.formatMessage({ id: "Edit" })}
+                    {"Edit"}
                   </span>
                 </DropdownItem>
                 <DropdownItem href="#" onClick={(e) => handleDelete(e, row)}>
@@ -69,7 +69,7 @@ export const columns = (handleEdit, handleDelete, handleView) => {
                     size={20}
                   />{" "}
                   <span className="align-middle">
-                    {intl.formatMessage({ id: "Delete" })}
+                    {"Delete"}
                   </span>
                 </DropdownItem>
               </DropdownMenu>

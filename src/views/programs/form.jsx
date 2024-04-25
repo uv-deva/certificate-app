@@ -234,7 +234,7 @@ const ProgramModal = ({ open, handleModal, modal }) => {
           <small className="text-danger">{validations.name ? validations.name : null}</small>
         </FormGroup>
         <FormGroup>
-            <Label for='program_date'>{intl.formatMessage({ id: "Program Date" })} <Info id="program_date" color="#45866E" size={14} /></Label>
+            <Label for='program_date'>{"Program Date" } <Info id="program_date" color="#45866E" size={14} /></Label>
             <InputGroup>
 
             <Flatpickr
@@ -287,7 +287,7 @@ const ProgramModal = ({ open, handleModal, modal }) => {
           <small className="text-danger">{validations.refDocuments ? validations.refDocuments : null}</small>
         </FormGroup>
         <FormGroup className="position-relative" style={{zIndex:0}}>
-            <Label for='refTemplate'>{intl.formatMessage({ id: "Template" })} <Info id="doc_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='refTemplate'>{"Template" } <Info id="doc_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
               <Button size="xs"  color='primary' type="button" onClick={() => setEditor(true)}>
                 {intl.formatMessage({id:"Edit"})}

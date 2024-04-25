@@ -42,7 +42,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
         <Row className=" py-1">
           <Col lg="6" sm="6">
             <FormGroup>
-              <Label for="name">{intl.formatMessage({ id: "Name" })}</Label>
+              <Label for="name">{"Name"}</Label>
               <InputGroup>
                 <Input
                   id="name"
@@ -57,7 +57,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
           <Col lg="6" sm="6">
             <FormGroup>
               <Label for="name">
-                {intl.formatMessage({ id: "Identifier" })}
+                {"Identifier"}
               </Label>
               <InputGroup>
                 <Input
@@ -75,7 +75,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
           <Col lg="6" sm="6">
             <FormGroup>
               <Label for="name">
-                {intl.formatMessage({ id: "Description" })}
+                {"Description"}
               </Label>
               <InputGroup>
                 <Input
@@ -94,9 +94,9 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
             <Row className=" py-1">
               <Col lg="6" sm="6">
                 <Label for="name">
-                  {intl.formatMessage({ id: "Image" })}{" "}
+                  {"Image"}{" "}
                   {!modal?.refImage &&
-                    `(${intl.formatMessage({ id: "No Image" })})`}{" "}
+                    `(${"No Image"})`}{" "}
                 </Label>
 
                 <div className="d-flex w-100 bg-white rounded">
@@ -117,7 +117,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
         <Row className=" py-1">
           <Col lg="6" sm="6">
             <FormGroup>
-              <Label for="name">{intl.formatMessage({ id: "Document" })}</Label>
+              <Label for="name">{"Document"}</Label>
               <div className="d-flex w-100 bg-white rounded">
                 <div className="flex-1 d-flex flex-column">
                   {modal?.refDocuments && modal?.refDocuments.length > 0 ? (
@@ -128,7 +128,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
                     ))
                   ) : (
                     <Badge color="secondary">
-                      {intl.formatMessage({ id: "No Document" })}
+                      {"No Document"}
                     </Badge>
                   )}
                 </div>
@@ -138,7 +138,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
 
           <Col lg="6" sm="6">
             <FormGroup>
-              <Label for="name">{intl.formatMessage({ id: "URL" })}</Label>
+              <Label for="name">{"URL"}</Label>
               <div className="d-flex w-100 bg-white rounded">
                 <div className="flex-1 ">
                   {modal?.url ? (
@@ -147,7 +147,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
                     </a>
                   ) : (
                     <Badge color="secondary">
-                      {intl.formatMessage({ id: "No URL" })}
+                      {"No URL"}
                     </Badge>
                   )}
                 </div>
@@ -159,7 +159,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
         <Row className=" py-1">
           <Col lg="6" sm="6">
             <FormGroup>
-              <Label for="name">{intl.formatMessage({ id: "Type" })}</Label>
+              <Label for="name">{"Type"}</Label>
               <InputGroup>
                 <Input
                   disabled={true}
@@ -170,7 +170,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
           </Col>
           <Col lg="6" sm="6">
             <FormGroup>
-              <Label for="name">{intl.formatMessage({ id: "Status" })}</Label>
+              <Label for="name">{"Status"}</Label>
               <InputGroup>
                 <Input
                   id="url"
@@ -193,7 +193,7 @@ const WalletView = ({ open, onEdit, handleModal, modal }) => {
             >
               <Edit2 size={15} />
               <span className="align-middle ml-50">
-                {intl.formatMessage({ id: "Edit" })}
+                {"Edit"}
               </span>
             </Button>
           </Col>

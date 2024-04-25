@@ -108,37 +108,44 @@ const PartnersModal = ({ open, handleModal, modal }) => {
       .mixed()
       .test(
         "fileSize",
-        intl.formatMessage({ id: "File too large" }),
-        value => (!value[0] ? true : value[0].size < FILE_SIZE)
+        "File too large",
+        (value) => (value && !value?.[0] ? true : value[0].size < FILE_SIZE)
       )
       .test(
         "fileFormat",
-        intl.formatMessage({ id: "Unsupported Format, accepts .jpg .png .gif" }),
-        value => (!value[0] ? true : SUPPORTED_FORMATS.includes(value[0].type))
+        "Unsupported Format, accepts .jpg .png .gif",
+        (value) => (value && !value?.[0] ? true : SUPPORTED_FORMATS.includes(value[0].type))
       ),
     refDocuments: yup
       .mixed()
       .test(
         "fileSize",
-        intl.formatMessage({ id: "File too large" }),
-        value => {
-          let valid = true
-          if (!value || value?.length <= 0) return valid
-          for (const k in value) if (value[k].size > PDF_FILE_SIZE) valid = false
-          return valid
-        })
+        "File too large",
+        (value) => {
+          let valid = true;
+          // Check if value is undefined or has no elements
+          if (!value || value?.length <= 0) return valid;
+    
+          for (const file of value) { // Use 'of' for iterating over array elements
+            if (file?.size > PDF_FILE_SIZE) valid = false;
+          }
+          return valid;
+        }
+      )
       .test(
         "fileFormat",
-        intl.formatMessage({ id: "Unsupported Format, accepts pdf" }),
-        value => {
-          let valid = true
-          if (!value || value?.length <= 0) return valid
-
-          for (const k in value) {
-            if (value[k].type && !SUPPORTED_PDF_FORMATS.includes(value[k].type)) valid = false
+        "Unsupported Format, accepts pdf",
+        (value) => {
+          let valid = true;
+          // Check if value is undefined or has no elements
+          if (!value || value?.length <= 0) return valid;
+    
+          for (const file of value) {
+            if (file?.type && !SUPPORTED_PDF_FORMATS.includes(file?.type)) valid = false;
           }
-          return valid
-        })
+          return valid;
+        }
+      )
   }
 
   if (modal && modal.id) {
@@ -148,7 +155,6 @@ const PartnersModal = ({ open, handleModal, modal }) => {
   }
 
   const SignupSchema = yup.object().shape(rules)
-
   const { register, watch, errors, handleSubmit } = useForm({
     defaultValues: { ...modal, refImage: null, refDocuments: null },
     mode: 'onChange',
@@ -161,8 +167,10 @@ const PartnersModal = ({ open, handleModal, modal }) => {
 
   //handle form submit data, based on whether add or update form called depending action
   const onSubmit = data => {
-    const resp = { ...data }
+    console.log(data)
 
+    const resp = { ...data }
+    console.log(resp)
     if (refType) {
       resp['account_type'] = JSON.parse(refType).id
     } else {
@@ -248,26 +256,26 @@ const PartnersModal = ({ open, handleModal, modal }) => {
       contentClassName='pt-0'
     >
       <ModalHeader className='mb-3' toggle={handleModal} close={CloseBtn} tag='div'>
-        <h5 className='modal-title'>{!modal ? intl.formatMessage({ id: "Add New Account" }) : intl.formatMessage({ id: "Update Account" })}</h5>
+        <h5 className='modal-title'>{!modal ? "Add New Account" : "Update Account"}</h5>
       </ModalHeader>
       <ModalBody className='flex-grow-1'>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormGroup>
-            <Label for='first_name'>{intl.formatMessage({ id: "Name" })}<span className="text-danger">*</span> <Info id="name_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='first_name'>{"Name"}<span className="text-danger">*</span> <Info id="name_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
               <Input
                 id='first_name'
                 name='first_name'
-                innerRef={register({ required: true })}
-                invalid={errors.first_name && true}
-                placeholder={intl.formatMessage({ id: "e.g. John Doe" })}
+                {...register("first_name")}
+                invalid={errors && errors.first_name && true}
+                placeholder={"e.g. John Doe"}
               />
               <UncontrolledTooltip placement='right' target='name_tooltip'>
                 Enter the full name <br />of the partner
               </UncontrolledTooltip>
             </InputGroup>
-            <small className="text-danger">{errors.first_name ? errors.first_name.message : null}</small>
+            <small className="text-danger">{errors && errors.first_name ? errors.first_name.message : null}</small>
             <small className="text-danger">{validations.first_name ? validations.first_name : null}</small>
           </FormGroup>
           {(group === 'administrator') && <div>
@@ -291,7 +299,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                   disabled={modal && modal.groups}
                   id='account_type'
                   name='account_type'
-                  innerRef={register({ required: true })}
+                  {...register("account_type", { required: true })}
                   invalid={errors?.account_type && true}
                   hidden={!modal || modal.groups[0].name !== 'administrator'}
                   value={modal ? JSON.parse(refType)[0]?.name : refType}
@@ -305,7 +313,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
 
           </div>}
           <FormGroup>
-            <Label for='type'>{intl.formatMessage({ id: "Profile" })}<span className="text-danger">*</span> <Info id="type_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='type'>{"Profile"}<span className="text-danger">*</span> <Info id="type_tooltip" color="#45866E" size={14} /></Label>
             
             {(!modal || !modal.groups) && <Select
               isClearable={false}
@@ -325,76 +333,76 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                 disabled={modal && modal.groups}
                 id='type'
                 name='type'
-                innerRef={register({ required: true })}
-                invalid={errors.type && true}
+                {...register("type", { required: true })}
+                invalid={errors && errors.type && true}
                 hidden={!modal}
                 value={modal ? JSON.parse(type)?.name : type}
             />
             <UncontrolledTooltip placement='right' target='type_tooltip'>
                 Select account type
               </UncontrolledTooltip>
-            <small className="text-danger">{errors.type ? errors.type.message : null}</small>
+            <small className="text-danger">{errors && errors.type ? errors.type.message : null}</small>
             <small className="text-danger">{validations.type ? validations.type : null}</small>
           </FormGroup>
 
           {!modal && <div>
             <FormGroup className="position-relative" style={{zIndex:0}}>
-              <Label for='username'>{intl.formatMessage({ id: "Username" })}<span className="text-danger">*</span> <Info id="username_tooltip" color="#45866E" size={14} /></Label>
+              <Label for='username'>{"Username"}<span className="text-danger">*</span> <Info id="username_tooltip" color="#45866E" size={14} /></Label>
               <InputGroup>
 
                 <Input
                   id='username'
                   name='username'
-                  innerRef={register({ required: true })}
-                  invalid={errors.username && true}
-                  placeholder={intl.formatMessage({ id: "Enter Username" })}
+                  {...register("username", { required: true })}
+                  invalid={errors && errors.username && true}
+                  placeholder={"Enter Username"}
                 />
                 <UncontrolledTooltip placement='right' target='username_tooltip'>
                   Username should be lowercase letters and no spaces (eg. john_smith).
                 </UncontrolledTooltip>
               </InputGroup>
-              <small className="text-danger">{errors.username ? errors.username.message : null}</small>
+              <small className="text-danger">{errors && errors.username ? errors.username.message : null}</small>
               <small className="text-danger">{validations.username ? validations.username : null}</small>
             </FormGroup>
             <FormGroup className="position-relative" style={{zIndex:0}}>
-              <Label for='password'>{intl.formatMessage({ id: "Password" })}<span className="text-danger">*</span> <Info id="password_tooltip" color="#45866E" size={14} /></Label>
+              <Label for='password'>{"Password" }<span className="text-danger">*</span> <Info id="password_tooltip" color="#45866E" size={14} /></Label>
               <InputPasswordToggle
                 htmlFor='password'
                 name='password'
-                innerRef={register({ required: true })}
-                placeholder={intl.formatMessage({ id: "e.g. Password_123" })}
+                {...register("password", { required: true })}
+                placeholder={"e.g. Password_123" }
                 className={classnames('input-group-merge', {
-                  'is-invalid': errors['password']
+                  'is-invalid': errors && errors['password']
                 })}
               />
               <small className='text-danger'>{validations.password ? validations.password : ""}</small>
               <UncontrolledTooltip placement='right' target='password_tooltip'>
                 enter a first time password here.
               </UncontrolledTooltip>
-              <small className="text-danger">{errors.password ? errors.password.message : null}</small>
+              <small className="text-danger">{errors && errors.password ? errors.password.message : null}</small>
               <small className="text-danger">{validations.password ? validations.password : null}</small>
             </FormGroup>
             </div>}
             <FormGroup className="position-relative" style={{zIndex:0}}>
-              <Label for='email'>{intl.formatMessage({ id: "Email" })}<span className="text-danger">*</span> <Info id="email_tooltip" color="#45866E" size={14} /></Label>
+              <Label for='email'>{"Email"}<span className="text-danger">*</span> <Info id="email_tooltip" color="#45866E" size={14} /></Label>
               <InputGroup>
                 <Input
                   id='email'
                   name='email'
-                  innerRef={register({ required: true })}
-                  invalid={errors.email && true}
-                  placeholder={intl.formatMessage({ id: "e.g. john@university.com" })}
+                  {...register("email", { required: true })}
+                  invalid={errors && errors.email && true}
+                  placeholder={"e.g. john@university.com"}
                 />
                 <UncontrolledTooltip placement='right' target='email_tooltip'>
                   If you want your partner to access the platform, enter his e-mail address here
                 </UncontrolledTooltip>
               </InputGroup>
-              <small className="text-danger">{errors.email ? errors.email.message : null}</small>
+              <small className="text-danger">{errors && errors.email ? errors.email.message : null}</small>
               <small className="text-danger">{validations.email ? validations.email : null}</small>
             </FormGroup>
           
           <FormGroup className="position-relative" style={{zIndex:0}}>
-            <Label for='refImage'>{intl.formatMessage({ id: "Logo" })} <Info id="img_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='refImage'>{"Logo"} <Info id="img_tooltip" color="#45866E" size={14} /></Label>
             <Row>
               <Col md="3">
                 <Avatar imgHeight={50} imgWidth={50} img={logo} style={{ cursor: 'default' }} />
@@ -402,127 +410,127 @@ const PartnersModal = ({ open, handleModal, modal }) => {
               <Col md="9" className="pl-0">
                 <InputGroup>
 
-                  <Input onChange={onChange} type='file' id='refImage' name='refImage' innerRef={register({ required: true })} invalid={errors.refImage && true} />
+                  <Input onChange={onChange} type='file' id='refImage' name='refImage' {...register("refImage", { required: true })} invalid={errors && errors.refImage && true} />
                   <UncontrolledTooltip placement='right' target='img_tooltip'>
                     Upload a logo of the partner.
                   </UncontrolledTooltip>
                 </InputGroup>
               </Col>
             </Row>
-            <small className="text-danger">{errors.refImage ? errors.refImage.message : null}</small>
+            <small className="text-danger">{errors && errors.refImage ? errors.refImage.message : null}</small>
             <small className="text-danger">{validations.refImage ? validations.refImage : null}</small>
           </FormGroup>
           <FormGroup>
-            <Label for='refDocuments'>{intl.formatMessage({ id: "Document" })} <Info id="doc_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='refDocuments'>{"Document"} <Info id="doc_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
-              <Input multiple="multiple" type='file' id='refDocuments' name='refDocuments' innerRef={register({ required: true })} invalid={errors.refDocuments && true} accept="application/pdf" />
+              <Input multiple="multiple" type='file' id='refDocuments' name='refDocuments' {...register("refDocuments", { required: true })} invalid={errors && errors.refDocuments && true} accept="application/pdf" />
               <UncontrolledTooltip placement='right' target='doc_tooltip'>
                 Upload any document<br /> about the partner
               </UncontrolledTooltip>
             </InputGroup>
-            <small className="text-danger">{errors.refDocuments ? errors.refDocuments.message : null}</small>
+            <small className="text-danger">{errors && errors.refDocuments ? errors.refDocuments.message : null}</small>
             <small className="text-danger">{validations.refDocuments ? validations.refDocuments : null}</small>
           </FormGroup>
           <FormGroup>
-            <Label for='url'>{intl.formatMessage({ id: "URL" })} <Info id="url_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='url'>{"URL"} <Info id="url_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
               <Input
                 id='url'
                 name='url'
                 type="url"
-                innerRef={register({ required: true })}
-                invalid={errors.url && true}
-                placeholder={intl.formatMessage({ id: "e.g. https://www.unibw.online" })}
+                {...register("url", { required: true })}
+                invalid={errors && errors.url && true}
+                placeholder={"e.g. https://www.unibw.online"}
               />
               <UncontrolledTooltip placement='right' target='url_tooltip'>
                 Enter the Partners Website
               </UncontrolledTooltip>
             </InputGroup>
-            <small className="text-danger">{errors.url ? errors.url.message : null}</small>
+            <small className="text-danger">{errors && errors.url ? errors.url.message : null}</small>
             <small className="text-danger">{validations.url ? validations.url : null}</small>
           </FormGroup>
          
           <FormGroup>
-            <Label for='company'>{intl.formatMessage({ id: "Company" })} <Info id="comp_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='company'>{"Company"} <Info id="comp_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
               <Input
                 id='company'
                 name='company'
                 innerRef={register()}
-                invalid={errors.company && true}
-                placeholder={intl.formatMessage({ id: "e.g. Universität der Bundeswehr München" })}
+                invalid={errors && errors.company && true}
+                placeholder={"e.g. Universität der Bundeswehr München"}
               />
               <UncontrolledTooltip placement='right' target='comp_tooltip'>
                 If the partners name differs from the companys name, you can enter here the companys name.
               </UncontrolledTooltip>
             </InputGroup>
-            <small className="text-danger">{errors.company ? errors.company.message : null}</small>
+            <small className="text-danger">{errors && errors.company ? errors.company.message : null}</small>
             <small className="text-danger">{validations.company ? validations.company : null}</small>
           </FormGroup>
           <FormGroup>
-            <Label for='address'>{intl.formatMessage({ id: "Address" })} <Info id="addr_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='address'>{"Address"} <Info id="addr_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
               <Input
                 type="textarea"
                 id='address'
                 name='address'
-                innerRef={register({ required: true })}
-                invalid={errors.address && true}
-                placeholder={intl.formatMessage({ id: "e.g. Werner-Heisenberg-Weg 39, 85579 Neubiberg" })}
+                {...register("address", { required: true })}
+                invalid={errors && errors.address && true}
+                placeholder={"e.g. Werner-Heisenberg-Weg 39, 85579 Neubiberg"}
               />
               <UncontrolledTooltip placement='right' target='addr_tooltip'>
                 Enter the address of the partner.
               </UncontrolledTooltip>
             </InputGroup>
-            <small className="text-danger">{errors.address ? errors.address.message : null}</small>
+            <small className="text-danger">{errors && errors.address ? errors.address.message : null}</small>
             <small className="text-danger">{validations.address ? validations.address : null}</small>
           </FormGroup>
           <FormGroup>
-            <Label for='description'>{intl.formatMessage({ id: "Description" })} <Info id="desc_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='description'>{"Description"} <Info id="desc_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
               <Input
                 type="textarea"
                 id='description'
                 name='description'
-                innerRef={register({ required: true })}
-                invalid={errors.description && true}
+                {...register("description", { required: true })}
+                invalid={errors && errors.description && true}
                 placeholder={null}
               />
               <UncontrolledTooltip placement='right' target='desc_tooltip'>
                 Enter any additional description for the account.
               </UncontrolledTooltip>
             </InputGroup>
-            <small className="text-danger">{errors.description ? errors.description.message : null}</small>
+            <small className="text-danger">{errors && errors.description ? errors.description.message : null}</small>
             <small className="text-danger">{validations.description ? validations.description : null}</small>
           </FormGroup>
           <FormGroup>
-            <Label for='phone'>{intl.formatMessage({ id: "Phone" })} <Info id="phone_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='phone'>{"Phone"} <Info id="phone_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
               <Input
                 id='phone'
                 name='phone'
-                innerRef={register({ required: true })}
-                invalid={errors.phone && true}
-                placeholder={intl.formatMessage({ id: "e.g. +49 89 6004-0" })}
+                {...register("phone", { required: true })}
+                invalid={errors && errors.phone && true}
+                placeholder={"e.g. +49 89 6004-0"}
               />
               <UncontrolledTooltip placement='right' target='phone_tooltip'>
                 Enter the phone number.
               </UncontrolledTooltip>
             </InputGroup>
-            <small className="text-danger">{errors.phone ? errors.phone.message : null}</small>
+            <small className="text-danger">{errors && errors.phone ? errors.phone.message : null}</small>
             <small className="text-danger">{validations.phone ? validations.phone : null}</small>
           </FormGroup>
 
           <Button className='mr-1' color='secondary' onClick={handleModal} outline>
-            {intl.formatMessage({ id: "Cancel" })}
+            {"Cancel"}
           </Button>
           <Button color='primary' type="submit">
-            {loading ? intl.formatMessage({ id: "Submitting..." }) : intl.formatMessage({ id: "Submit" })}
+            {loading ? "Submitting..." : "Submit"}
           </Button>
         </Form>
         <small className="text-danger">{errorText ? errorText : null}</small>

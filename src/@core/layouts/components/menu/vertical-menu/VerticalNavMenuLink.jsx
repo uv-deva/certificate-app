@@ -1,6 +1,6 @@
 // ** React Imports
 import { useEffect, useContext } from 'react'
-import { NavLink, useLocation, matchPath, useParams } from 'react-router-dom'
+import { NavLink, useLocation, matchPath } from 'react-router-dom'
 
 // ** Third Party Components
 import { Badge } from 'reactstrap'
@@ -33,14 +33,13 @@ const VerticalNavMenuLink = ({
 
   // ** URL Vars
   const location = useLocation()
-  const currentURL = location.pathname
+  const currentURL = location.pathname.toString(); 
 
   // ** To match path
-  const match = matchPath(currentURL, {
+  const match = matchPath({
     path: `${item.navLink}/:param`,
     exact: true,
-    strict: false
-  })
+  }, currentURL.toString())
 
   // ** ACL Ability Context
   const ability = useContext(AbilityContext)

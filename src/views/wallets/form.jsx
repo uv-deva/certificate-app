@@ -185,7 +185,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           <small className="text-danger">{validations.identifier ? validations.identifier : null}</small>
         </FormGroup>
         <FormGroup>
-          <Label for='model_type'>{intl.formatMessage({ id: "Profile" })}<span className="text-danger">*</span> <Info id="type_tooltip" color="#45866E" size={14} /></Label>
+          <Label for='model_type'>{"Profile" }<span className="text-danger">*</span> <Info id="type_tooltip" color="#45866E" size={14} /></Label>
             
           {!modal && <Select
             isClearable={false}
@@ -215,14 +215,14 @@ const WalletModal = ({ open, handleModal, modal }) => {
             <small className="text-danger">{validations.model_type ? validations.model_type : null}</small>
           </FormGroup>
         {!modal && <FormGroup>
-            <Label for='label_account'>{intl.formatMessage({ id: "Select Account" })} <Info id="account_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='label_account'>{"Select Account"} <Info id="account_tooltip" color="#45866E" size={14} /></Label>
 
             <Select
               defaultValue={JSON.stringify(null)}
               onChange={(value) => setRefAccount(JSON.stringify(value))}
               value={JSON.parse(refAccount)}
               options={accounts}
-              placeholder={intl.formatMessage({ id: "e.g. Student" })}
+              placeholder={"e.g. Student"}
               onInputChange={(newValue) => onSearchAccounts({ currentTarget: { value: newValue } })}
               getOptionLabel={(account) => account.first_name}
               getOptionValue={(account) => account.id}
@@ -237,7 +237,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
               name='refUser'
               innerRef={register({ required: true })}
               invalid={errors.type && true}
-              placeholder={intl.formatMessage({ id: "Enter type Name" })}
+              placeholder={"Enter type Name" }
               value={refAccount}
             />
             {errors.type && true ? 'Please select type' : ''}
@@ -250,7 +250,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           <Input
               disabled
               invalid={errors.type && true}
-              placeholder={intl.formatMessage({ id: "Enter type Name" })}
+              placeholder={"Enter type Name" }
               value={modal?.name}
             />
             <Input
@@ -259,7 +259,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
               name='refUser'
               innerRef={register({ required: true })}
               invalid={errors.type && true}
-              placeholder={intl.formatMessage({ id: "Enter type Name" })}
+              placeholder={"Enter type Name" }
               value={refAccount}
             />
         </FormGroup>}

@@ -24,7 +24,7 @@ const PasswordTabContent = () => {
     'retype-new-password': yup
       .string()
       .required()
-      .oneOf([yup.ref(`new_password`), null], intl.formatMessage({ id: "Passwords must match" }))
+      .oneOf([yup.ref(`new_password`), null], "Passwords must match")
   })
 
   //Init React Hook Form
@@ -41,7 +41,7 @@ const PasswordTabContent = () => {
         <Col sm='6'>
           <FormGroup>
             <InputPasswordToggle
-              label={intl.formatMessage({ id: "Old Password" })}
+              label={"Old Password"}
               htmlFor='old_password'
               name='old_password'
               innerRef={register({ required: true })}
@@ -58,7 +58,7 @@ const PasswordTabContent = () => {
         <Col sm='6'>
           <FormGroup>
             <InputPasswordToggle
-              label={intl.formatMessage({ id: "New Password" })}
+              label={"New Password"}
               htmlFor='new_password'
               name='new_password'
               innerRef={register({ required: true })}
@@ -73,7 +73,7 @@ const PasswordTabContent = () => {
         <Col sm='6'>
           <FormGroup>
             <InputPasswordToggle
-              label={intl.formatMessage({ id: "Retype New Password" })}
+              label={"Retype New Password"}
               htmlFor='retype-new-password'
               name='retype-new-password'
               innerRef={register({ required: true })}
@@ -90,11 +90,11 @@ const PasswordTabContent = () => {
         </Col>}
         <Col className='mt-1' sm='12'>
           <Button.Ripple type='submit' className='mr-1' color='primary'>
-            {!loading ? intl.formatMessage({ id: "Save Changes" }) : intl.formatMessage({ id: "Saving" })}
+            {!loading ? "Save Changes" : "Saving"}
           </Button.Ripple>
           <Link to="/">
             <Button.Ripple color='secondary' outline>
-              {intl.formatMessage({ id: "Cancel" })}
+              {"Cancel" }
             </Button.Ripple>
           </Link>
         </Col>

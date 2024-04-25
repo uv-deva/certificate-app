@@ -86,7 +86,7 @@ const Programs = () => {
   //          row = row data
   const onDelete = (e, row) => {
     e.preventDefault() 
-    if (confirm(intl.formatMessage({ id: "Are you sure, you want to delete?" }))) dispatch(ontTableRowDelete('programs', row.id))
+    if (confirm("Are you sure, you want to delete?")) dispatch(ontTableRowDelete('programs', row.id))
   }
 
   // ** Function to handle edit action of the row

@@ -195,7 +195,7 @@ const CertificateModal = ({ open, handleModal, modal }) => {
         <Form onSubmit={handleSubmit(onSubmit)}>
          
           <FormGroup>
-            <Label for='label_name'>{intl.formatMessage({ id: "Name" })}<span className="text-danger">*</span> <Info id="name_tooltip" color="#45866E" size={14} /></Label>
+            <Label for='label_name'>{"Name"}<span className="text-danger">*</span> <Info id="name_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
               <Input

@@ -1,5 +1,5 @@
 // ** React Imports
-import React, { Suspense, useContext, lazy } from 'react'
+import React, { Fragment, Suspense, useContext, lazy } from 'react'
 
 // ** Utils
 import { useLayout } from '@hooks/useLayout'
@@ -134,98 +134,85 @@ const Router = () => {
       const routerProps = {}
 
       return (
-          <Route path={LayoutPaths} key={index}>
-            <LayoutTag
+
+          LayoutRoutes.map((route, idx) => {
+            Object.assign(routerProps, {
+              ...route,
+              meta: route.meta
+            })            
+            return (
+            <Route
+              path={route.path}
+              element={        
+                <LayoutTag
               routerProps={routerProps}
               layout={layout}
               setLayout={setLayout}
               transition={transition}
               setTransition={setTransition}
               currentActiveItem={currentActiveItem}
-            >
-              <Routes>
-                {LayoutRoutes.map(route => {
-                  return (
-                    <Route
-                      key={route.path}
-                      path={route.path}
-                      exact={route.exact === true}
-                      render={props => {
-                        // ** Assign props to routerProps
-                        Object.assign(routerProps, {
-                          ...props,
-                          meta: route.meta
-                        })
-
-                        return (
-                          <Suspense fallback={null}>
-                            {/* Layout Wrapper to add classes based on route's layout, appLayout and className */}
-                            <LayoutWrapper
-                              layout={route.layout}
-                              transition={transition}
-                              setTransition={setTransition}
-                              /* Conditional props */
-                              /*eslint-disable */
-                              {...(route.appLayout
-                                ? {
-                                    appLayout: route.appLayout
-                                  }
-                                : {})}
-                              {...(route.meta
-                                ? {
-                                    routeMeta: route.meta
-                                  }
-                                : {})}
-                              {...(route.className
-                                ? {
-                                    wrapperClass: route.className
-                                  }
-                                : {})}
-                              /*eslint-enable */
-                            >
-                              <FinalRoute route={route} {...props} />
-                            </LayoutWrapper>
-                          </Suspense>
-                        )
-                      }}
-                    />
-                  )
-                })}
-              </Routes>
-            </LayoutTag>
-          </Route>
+            >                        
+                <Suspense fallback={null}>                  
+                  <LayoutWrapper
+                    layout={route.layout}
+                    transition={transition}
+                    setTransition={setTransition}
+                    /* Conditional props */
+                    /*eslint-disable */
+                    {...(route.appLayout
+                      ? {
+                          appLayout: route.appLayout
+                        }
+                      : {})}
+                    {...(route.meta
+                      ? {
+                          routeMeta: route.meta
+                        }
+                      : {})}
+                    {...(route.className
+                      ? {
+                          wrapperClass: route.className
+                        }
+                      : {})}
+                    /*eslint-enable */
+                  >
+                      <FinalRoute route={route} {...route} />
+                  </LayoutWrapper>
+                  </Suspense>
+                  </LayoutTag>
+              }
+              key={idx}
+              exact={true}
+            />
+          )})
       )
     })
   }
 
   return (
       <AppRouter basename={import.meta.env.VITE_REACT_APP_BASENAME}>
+        {/* <Fragment> */}
         <Routes>
           {/* If user is logged in, navigate to DefaultRoute; otherwise, to login */}
           <Route
             exact
             path="/"
-            render={() => {
-              return isLoggedIn ? (
-                <Navigate to={user.groups[0].name === 'pilot' ? '/devices' : DefaultRoute} />
-              ) : (
-                <Navigate to="/login" />
-              );
-            }}
+            element={isLoggedIn ? <Navigate to={user.groups[0].name === 'pilot' ? '/devices' : DefaultRoute} /> : <Navigate to="/login" />}
           />
 
           {/* Not Authorized Route */}
-          {/* <Route
+          <Route
             exact
             path="/misc/not-authorized"
             element={<BlankLayout><NotAuthorized /></BlankLayout>} // Use `element` prop
-          /> */}
+          />
 
           {ResolveRoutes()}
 
           {/* NotFound Error page */}
           <Route path="*" element={<Error />} />
         </Routes>
+        {/* </Fragment> */}
       </AppRouter>
   );
 };

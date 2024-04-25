@@ -79,14 +79,11 @@ const WalletModal = ({ open, handleModal, modal }) => {
     name: yup.string().required(),
     refImage: yup
       .mixed()
-      .test("fileSize", intl.formatMessage({ id: "File too large" }), (value) =>
+      .test("fileSize", "File too large", (value) =>
         !value[0] ? true : value[0].size < FILE_SIZE
       )
       .test(
-        "fileFormat",
-        intl.formatMessage({
-          id: "Unsupported Format, accepts .jpg .png .gif",
-        }),
+        "fileFormat","Unsupported Format, accepts .jpg .png .gif",
         (value) =>
           !value[0] ? true : SUPPORTED_FORMATS.includes(value[0].type)
       ),
@@ -94,7 +91,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
       .mixed()
       .test(
         "fileSize",
-        intl.formatMessage({ id: "File too large" }),
+        "File too large",
         (value) => {
           let valid = true;
           if (!value || value?.length <= 0) return valid;
@@ -105,7 +102,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
       )
       .test(
         "fileFormat",
-        intl.formatMessage({ id: "Unsupported Format, accepts pdf" }),
+        "Unsupported Format, accepts pdf",
         (value) => {
           let valid = true;
           if (!value || value?.length <= 0) return valid;
@@ -193,15 +190,15 @@ const WalletModal = ({ open, handleModal, modal }) => {
       >
         <h5 className="modal-title">
           {!modal
-            ? intl.formatMessage({ id: "Add New Wallet" })
-            : intl.formatMessage({ id: "Update Node" })}
+            ? "Add New Wallet"
+            : "Update Node"}
         </h5>
       </ModalHeader>
       <ModalBody className="flex-grow-1">
         <Form onSubmit={handleSubmit(onSubmit)}>
           <FormGroup>
             <Label for="name">
-              {intl.formatMessage({ id: "Name" })}
+              {"Name"}
               <span className="text-danger">*</span>{" "}
               <Info id="nodeName_tooltip" color="#45866E" size={14} />
             </Label>
@@ -211,7 +208,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
                 name="name"
                 innerRef={register({ required: true })}
                 invalid={errors.name && true}
-                placeholder={intl.formatMessage({ id: "e.g. flour, eggs" })}
+                placeholder={"e.g. flour, eggs"}
               />
               <UncontrolledTooltip
                 placement="right"
@@ -229,7 +226,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           </FormGroup>
           <FormGroup>
             <Label for="name">
-              {intl.formatMessage({ id: "Identifier" })}
+              {"Identifier"}
               <span className="text-danger">*</span>{" "}
               <Info id="identifier_tooltip" color="#45866E" size={14} />
             </Label>
@@ -239,7 +236,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
                 name="identifier"
                 innerRef={register({ required: true })}
                 invalid={errors.identifier && true}
-                placeholder={intl.formatMessage({ id: "e.g. 4711" })}
+                placeholder={"e.g. 4711"}
               />
               <UncontrolledTooltip
                 placement="right"
@@ -257,7 +254,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           </FormGroup>
           <FormGroup>
             <Label for="name">
-              {intl.formatMessage({ id: "Type" })}{" "}
+              {"Type"}{" "}
               <Info id="type_tooltip" color="#45866E" size={14} />
             </Label>
 
@@ -296,7 +293,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           </FormGroup>
           <FormGroup>
             <Label for="name">
-              {intl.formatMessage({ id: "Image" })}{" "}
+              {"Image"}{" "}
               <Info id="image_tooltip" color="#45866E" size={14} />
             </Label>
             <Row>
@@ -334,7 +331,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           </FormGroup>
           <FormGroup>
             <Label for="name">
-              {intl.formatMessage({ id: "Document" })}{" "}
+              {"Document"}{" "}
               <Info id="documents_tooltip" color="#45866E" size={14} />
             </Label>
             <InputGroup style={{ zIndex: 0 }}>
@@ -360,7 +357,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           </FormGroup>
           <FormGroup>
             <Label for="name">
-              {intl.formatMessage({ id: "URL" })}{" "}
+              {"URL"}{" "}
               <Info id="url_tooltip" color="#45866E" size={14} />
             </Label>
             <InputGroup>
@@ -387,7 +384,7 @@ const WalletModal = ({ open, handleModal, modal }) => {
           </FormGroup>
           <FormGroup>
             <Label for="name">
-              {intl.formatMessage({ id: "Description" })}{" "}
+              {"Description"}{" "}
               <Info id="description_tooltip" color="#45866E" size={14} />
             </Label>
             <InputGroup>
@@ -446,12 +443,12 @@ const WalletModal = ({ open, handleModal, modal }) => {
             onClick={handleModal}
             outline
           >
-            {intl.formatMessage({ id: "Cancel" })}
+            {"Cancel"}
           </Button>
           <Button color="primary" type="submit">
             {loading
-              ? intl.formatMessage({ id: "Submitting..." })
-              : intl.formatMessage({ id: "Submit" })}
+              ? "Submitting..."
+              : "Submit"}
           </Button>
 
           <small className="text-danger">{errorText ? errorText : null}</small>

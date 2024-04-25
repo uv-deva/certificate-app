@@ -22,11 +22,11 @@ const ToastContent = ({ type = "info", title, body }) => {
         <div className='toastify-header'>
         <div className='title-wrapper'>
             <Avatar size='sm' color={type} icon={renderIcon()} />
-            <h6 className='toast-title font-weight-bold'>{intl.formatMessage({id:title})}</h6>
+            <h6 className='toast-title font-weight-bold'>{title}</h6>
         </div>
         </div>
         <div className='toastify-body'>
-        <span>{intl.formatMessage({id:body})}</span>
+        <span>{body}</span>
         </div>
     </Fragment>
 }
