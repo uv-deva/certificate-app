@@ -101,7 +101,7 @@ const certificateReducer = (state = initialState, action) => {
                     ...state,
                     ipfs:{
                         ...state['ipfs'],
-                        items:action.data.image,
+                        items:action.data["Certificate Image"],
                         loading:false, 
                         isDone:true
                     }            

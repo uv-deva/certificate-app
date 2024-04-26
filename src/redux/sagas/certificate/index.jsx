@@ -5,6 +5,7 @@ import { selectBaseUrl, selectLocale } from '../../selectors/config'
 import { selectToken } from '../../selectors/auth'
 import { downloadCertificateFail, downloadCertificateSuccess, getNonceFail, getNonceSuccess, fetchCertificateIpfsFail, fetchCertificateIpfsSuccess } from '../../actions/certificate'
 import moment from 'moment'
+import { toast, Slide } from 'react-toastify'
 import ToastContent from '../../../components/Toast'
 
 // worker Saga: will be fired on DOWNLOAD_CERTIFICATE action
@@ -85,15 +86,17 @@ export function* getNonce(params) {
         
         const res = yield call(request, `${requestURL}generateNonce/`, requestOptions)
         
-        if (res.data) {
+        if (res.data && res.status === 200) {
             yield put(getNonceSuccess(res.data))
+        } else {
+            toast.error(
+                <ToastContent type="error" title="Ooops!" body={res.data.message} />,
+                { transition: Slide, hideProgressBar: true }
+            )
+            yield put(getNonceFail([{message: e.message}]))
         }
       
     } catch (e) {
-        toast.error(
-        <ToastContent type="error" title="Ooops!" body={e.message} />,
-            { transition: Slide, hideProgressBar: true }
-        )
        yield put(getNonceFail([{message: e.message}]))
     }
 }
@@ -132,14 +135,14 @@ export function* fetchCertificateIpfs(params) {
         if (res.data && res.status === 200) {
             yield put(fetchCertificateIpfsSuccess(res.data))
         } else {
+            toast.error(
+                <ToastContent type="error" title="Ooops!" body={res.data.message} />,
+                { transition: Slide, hideProgressBar: true }
+            )
             yield put(fetchCertificateIpfsFail([{message: res.data.message}]))
         }
       
     } catch (e) {
-        toast.error(
-            <ToastContent type="error" title="Ooops!" body={e.message} />,
-                { transition: Slide, hideProgressBar: true }
-            )
        yield put(fetchCertificateIpfsFail(certificateId,  [{message: e.message}]))
     }
 }
