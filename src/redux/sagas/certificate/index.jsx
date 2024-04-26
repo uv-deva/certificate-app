@@ -68,9 +68,9 @@ export function* getNonce(params) {
         Accept: "application/json",
         "Content-Type":"application/json",
         "Accept-Language":locale,
-        "User-Agent": "Web App",
+        // "User-Agent": "Web App",
         // Authorization: `Token ${token}`,
-        Origin : "*"
+        // Origin : "*"
     }
 
     const formdata = new FormData()
@@ -111,9 +111,9 @@ export function* fetchCertificateIpfs(params) {
         Accept: "application/json",
         "Content-Type":"application/json",
         "Accept-Language":locale,
-        "User-Agent": "Web App",
+        // "User-Agent": "Web App",
         // Authorization: `Token ${token}`,
-        Origin : "*"
+        // Origin : "*"
     }
     
     const formdata = new FormData()
