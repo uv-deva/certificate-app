@@ -5,6 +5,7 @@ import { selectBaseUrl, selectLocale } from '../../selectors/config'
 import { selectToken } from '../../selectors/auth'
 import { downloadCertificateFail, downloadCertificateSuccess, getNonceFail, getNonceSuccess, fetchCertificateIpfsFail, fetchCertificateIpfsSuccess } from '../../actions/certificate'
 import moment from 'moment'
+import ToastContent from '../../../components/Toast'
 
 // worker Saga: will be fired on DOWNLOAD_CERTIFICATE action
 function generateCertificate(response, certificateId) {
