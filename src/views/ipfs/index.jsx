@@ -144,7 +144,7 @@ const CertificatesData = () => {
             />,
             { transition: Slide, hideProgressBar: true, autoClose: 2000 }
         )
-          const message = await web3.utils.soliditySha3(nonce, account);
+          const message = await web3.utils.soliditySha3(nonce, accounts);
         toast.error(
           <ToastContent
               type="error"
@@ -155,7 +155,7 @@ const CertificatesData = () => {
       )
           const sign = await provider.request({
             method: "personal_sign",
-            params: ["message", account],
+            params: ["message", accounts],
           });
           toast.error(
             <ToastContent
