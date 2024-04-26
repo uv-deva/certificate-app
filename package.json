@@ -21,6 +21,7 @@
     "@fullcalendar/timeline": "5.7.2",
     "@hookform/resolvers": "^3.3.4",
     "@mdi/js": "^7.4.47",
+    "@metamask/detect-provider": "^2.0.0",
     "@metamask/sdk": "^0.18.2",
     "@metamask/sdk-react": "^0.18.0",
     "@react-google-maps/api": "^2.19.3",

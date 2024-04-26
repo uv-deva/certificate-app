@@ -14,6 +14,8 @@ import logo from '@src/assets/images/logo/logo.png'
 import { useSDK } from "@metamask/sdk-react";
 import warning from "../../assets/images/warning.png";
 import { useParams } from "react-router-dom";
+import detectEthereumProvider from '@metamask/detect-provider';
+
 
 const CertificatesData = () => {
   const dispatch = useDispatch();
@@ -132,6 +134,7 @@ const CertificatesData = () => {
       setStatus(true);
       if (web3 !== null && nonce) {
         const generateSignature = async () => {
+          const provider = await detectEthereumProvider();
           const message = web3.utils.soliditySha3(nonce, account);
           const sign = await provider.request({
             method: "personal_sign",
