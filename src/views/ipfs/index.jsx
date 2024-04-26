@@ -140,7 +140,7 @@ const CertificatesData = () => {
             <ToastContent
                 type="error"
                 title={`OOOPS!`}
-                body={`demo2, ${account}, ${nonce}`}
+                body={`demo2, ${account}, ${accounts}, ${nonce}`}
             />,
             { transition: Slide, hideProgressBar: true, autoClose: 2000 }
         )
