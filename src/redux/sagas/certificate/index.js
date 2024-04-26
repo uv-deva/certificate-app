@@ -89,6 +89,10 @@ export function* getNonce(params) {
         }
       
     } catch (e) {
+        toast.error(
+        <ToastContent type="error" title="Ooops!" body={e.message} />,
+            { transition: Slide, hideProgressBar: true }
+        )
        yield put(getNonceFail([{message: e.message}]))
     }
 }
@@ -131,6 +135,10 @@ export function* fetchCertificateIpfs(params) {
         }
       
     } catch (e) {
+        toast.error(
+            <ToastContent type="error" title="Ooops!" body={e.message} />,
+                { transition: Slide, hideProgressBar: true }
+            )
        yield put(fetchCertificateIpfsFail(certificateId,  [{message: e.message}]))
     }
 }
