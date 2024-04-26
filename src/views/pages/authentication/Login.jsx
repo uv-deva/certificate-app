@@ -106,7 +106,7 @@ const Login = (props) => {
                   // })}
                 />
               </FormGroup>
-              <FormGroup>
+              <FormGroup className="mb-1">
                 <div className="d-flex justify-content-between">
                   <Label className="form-label" for="login-password">
                     <FormattedMessage id="Password" />
@@ -131,8 +131,13 @@ const Login = (props) => {
                   // })}
                 />
               </FormGroup>
-              <FormGroup>
-                <Input addon type='checkbox' className='custom-control-Primary' id='remember-me' label={intl.formatMessage({id:"Remember Me"})} />
+              <FormGroup check inline className="mb-1">
+                <div className="custom-control-Primary custom-checkbox custom-control">
+                <Input  type='checkbox' className='custom-control-Primary custom-control-input' id='remember-me' label={intl.formatMessage({id:"Remember Me"})} />                
+                <Label check for="remember-me" className="custom-control-label">
+                  {intl.formatMessage({id:"Remember Me"})}
+                </Label>
+                </div>
               </FormGroup>
               <Button.Ripple type="submit" color="primary" block>
                 <FormattedMessage id="Sign in" />

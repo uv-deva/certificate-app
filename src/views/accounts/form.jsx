@@ -100,52 +100,52 @@ const PartnersModal = ({ open, handleModal, modal }) => {
   const [done, setDone] = useState(isDone)
 
   const rules = {
-    // first_name: yup.string(),
-    // username: yup.string(),
-    // password: yup.string(),
-    // email: yup.string().email(),
-    // refImage: yup
-    //   .mixed()
-    //   .test(
-    //     "fileSize",
-    //     "File too large",
-    //     (value) => (value && !value?.[0] ? true : value[0].size < FILE_SIZE)
-    //   )
-    //   .test(
-    //     "fileFormat",
-    //     "Unsupported Format, accepts .jpg .png .gif",
-    //     (value) => (value && !value?.[0] ? true : SUPPORTED_FORMATS.includes(value[0].type))
-    //   ),
-    // refDocuments: yup
-    //   .mixed()
-    //   .test(
-    //     "fileSize",
-    //     "File too large",
-    //     (value) => {
-    //       let valid = true;
-    //       // Check if value is undefined or has no elements
-    //       if (!value || value?.length <= 0) return valid;
+    first_name: yup.string().required(),
+    username: yup.string().required(),
+    password: yup.string().required(),
+    email: yup.string().email().required(),
+    refImage: yup
+      .mixed()
+      .test(
+        "fileSize",
+        "File too large",
+        (value) => (value && !value?.[0] ? true : value[0].size < FILE_SIZE)
+      )
+      .test(
+        "fileFormat",
+        "Unsupported Format, accepts .jpg .png .gif",
+        (value) => (value && !value?.[0] ? true : SUPPORTED_FORMATS.includes(value[0].type))
+      ),
+    refDocuments: yup
+      .mixed()
+      .test(
+        "fileSize",
+        "File too large",
+        (value) => {
+          let valid = true;
+          // Check if value is undefined or has no elements
+          if (!value || value?.length <= 0) return valid;
     
-    //       for (const file of value) { // Use 'of' for iterating over array elements
-    //         if (file?.size > PDF_FILE_SIZE) valid = false;
-    //       }
-    //       return valid;
-    //     }
-    //   )
-    //   .test(
-    //     "fileFormat",
-    //     "Unsupported Format, accepts pdf",
-    //     (value) => {
-    //       let valid = true;
-    //       // Check if value is undefined or has no elements
-    //       if (!value || value?.length <= 0) return valid;
+          for (const file of value) { // Use 'of' for iterating over array elements
+            if (file?.size > PDF_FILE_SIZE) valid = false;
+          }
+          return valid;
+        }
+      )
+      .test(
+        "fileFormat",
+        "Unsupported Format, accepts pdf",
+        (value) => {
+          let valid = true;
+          // Check if value is undefined or has no elements
+          if (!value || value?.length <= 0) return valid;
     
-    //       for (const file of value) {
-    //         if (file?.type && !SUPPORTED_PDF_FORMATS.includes(file?.type)) valid = false;
-    //       }
-    //       return valid;
-    //     }
-    //   )
+          for (const file of value) {
+            if (file?.type && !SUPPORTED_PDF_FORMATS.includes(file?.type)) valid = false;
+          }
+          return valid;
+        }
+      )
   }
 
   if (modal && modal.id) {
@@ -154,17 +154,23 @@ const PartnersModal = ({ open, handleModal, modal }) => {
     delete rules.email
   }
 
-  // const SignupSchema = yup.object().shape(rules)
-  const { register, watch, errors, handleSubmit, setValue } = useForm({
+  const SignupSchema = yup.object().shape(rules)
+  const { register, watch, errors, handleSubmit } = useForm({
     defaultValues: { ...modal, refImage: null, refDocuments: null },
     mode: 'onChange',
-    // resolver: yupResolver(SignupSchema)
+    resolver: yupResolver(SignupSchema)
   })
+
+  //watching over the create account option to toggle the additional fields
+  const createAccount = watch('create_account', false)
+
 
   //handle form submit data, based on whether add or update form called depending action
   const onSubmit = data => {
+    console.log(data)
 
     const resp = { ...data }
+    console.log(resp)
     if (refType) {
       resp['account_type'] = JSON.parse(refType).id
     } else {
@@ -194,8 +200,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
   //On change Image
   const onChange = e => {
     const reader = new FileReader(),
-    files = e.target.files
-    setValue("refImage", e.target.files)
+      files = e.target.files
     reader.onload = function () {
       setLogo(reader.result)
     }
@@ -263,8 +268,6 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                 id='first_name'
                 name='first_name'
                 {...register("first_name")}
-                onChange={e => setValue('first_name', e.target.value)}
-                required
                 invalid={errors && errors.first_name && true}
                 placeholder={"e.g. John Doe"}
               />
@@ -297,7 +300,6 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                   id='account_type'
                   name='account_type'
                   {...register("account_type", { required: true })}
-                  onChange={setValue('account_type',refType)}
                   invalid={errors?.account_type && true}
                   hidden={!modal || modal.groups[0].name !== 'administrator'}
                   value={modal ? JSON.parse(refType)[0]?.name : refType}
@@ -331,8 +333,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                 disabled={modal && modal.groups}
                 id='type'
                 name='type'
-                {...register("type")}
-                onChange={setValue('type', type)}
+                {...register("type", { required: true })}
                 invalid={errors && errors.type && true}
                 hidden={!modal}
                 value={modal ? JSON.parse(type)?.name : type}
@@ -353,7 +354,6 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                   id='username'
                   name='username'
                   {...register("username", { required: true })}
-                  onChange={e => setValue('username', e.target.value)}
                   invalid={errors && errors.username && true}
                   placeholder={"Enter Username"}
                 />
@@ -370,7 +370,6 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                 htmlFor='password'
                 name='password'
                 {...register("password", { required: true })}
-                onChange={e => setValue('password', e.target.value)}
                 placeholder={"e.g. Password_123" }
                 className={classnames('input-group-merge', {
                   'is-invalid': errors && errors['password']
@@ -391,7 +390,6 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                   id='email'
                   name='email'
                   {...register("email", { required: true })}
-                  onChange={e => setValue('email', e.target.value)}
                   invalid={errors && errors.email && true}
                   placeholder={"e.g. john@university.com"}
                 />
@@ -412,7 +410,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
               <Col md="9" className="pl-0">
                 <InputGroup>
 
-                  <Input onChange={onChange} type='file' name='refImage'/>
+                  <Input onChange={onChange} type='file' id='refImage' name='refImage' {...register("refImage", { required: true })} invalid={errors && errors.refImage && true} />
                   <UncontrolledTooltip placement='right' target='img_tooltip'>
                     Upload a logo of the partner.
                   </UncontrolledTooltip>
@@ -426,7 +424,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
             <Label for='refDocuments'>{"Document"} <Info id="doc_tooltip" color="#45866E" size={14} /></Label>
             <InputGroup>
 
-              <Input multiple="multiple" type='file' id='refDocuments' name='refDocuments' onChange={e => setValue('refDocuments', e.target.files)} invalid={errors && errors.refDocuments && true} accept="application/pdf" />
+              <Input multiple="multiple" type='file' id='refDocuments' name='refDocuments' {...register("refDocuments", { required: true })} invalid={errors && errors.refDocuments && true} accept="application/pdf" />
               <UncontrolledTooltip placement='right' target='doc_tooltip'>
                 Upload any document<br /> about the partner
               </UncontrolledTooltip>
@@ -441,8 +439,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                 id='url'
                 name='url'
                 type="url"
-                {...register("url")}
-                onChange={e => e ? setValue('url', e.target.value) : null}
+                {...register("url", { required: true })}
                 invalid={errors && errors.url && true}
                 placeholder={"e.g. https://www.unibw.online"}
               />
@@ -461,7 +458,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
               <Input
                 id='company'
                 name='company'
-                onChange={e => e ? setValue('company', e.target.value) : null}
+                innerRef={register()}
                 invalid={errors && errors.company && true}
                 placeholder={"e.g. Universität der Bundeswehr München"}
               />
@@ -480,7 +477,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                 type="textarea"
                 id='address'
                 name='address'
-                onChange={e => e ? setValue('address', e.target.value) : null}
+                {...register("address", { required: true })}
                 invalid={errors && errors.address && true}
                 placeholder={"e.g. Werner-Heisenberg-Weg 39, 85579 Neubiberg"}
               />
@@ -499,7 +496,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
                 type="textarea"
                 id='description'
                 name='description'
-                onChange={e => e ? setValue('description', e.target.value) : null}
+                {...register("description", { required: true })}
                 invalid={errors && errors.description && true}
                 placeholder={null}
               />
@@ -517,7 +514,7 @@ const PartnersModal = ({ open, handleModal, modal }) => {
               <Input
                 id='phone'
                 name='phone'
-                onChange={e => e ? setValue('phone', e.target.value) : null}
+                {...register("phone", { required: true })}
                 invalid={errors && errors.phone && true}
                 placeholder={"e.g. +49 89 6004-0"}
               />

@@ -65,7 +65,7 @@ const PagesRoutes = [
     }
   },
   {
-    path: '/certificates/data',
+    path: '/certificates/data/:certificateId',
     component: lazy(() => import('../../views/ipfs')),
     layout: 'BlankLayout',
     meta: {

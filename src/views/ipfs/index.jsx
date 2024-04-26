@@ -10,11 +10,12 @@ import {
   selectTableIsDone,
   selectItemsError,
 } from "../../redux/selectors/certificate";
-// import logo from '@src/assets/images/logo/logo.png'
+import logo from '@src/assets/images/logo/logo.png'
 import { useSDK } from "@metamask/sdk-react";
 import warning from "../../assets/images/warning.png";
+import { useParams } from "react-router-dom";
 
-const IPFS = () => {
+const CertificatesData = () => {
   const dispatch = useDispatch();
   const {
     sdk,
@@ -35,8 +36,9 @@ const IPFS = () => {
   const [accounts, setAccount] = useState(null);
   const [signature, setSignature] = useState(null);
   const [status, setStatus] = useState(false);
+  const { certificateId } = useParams();
 
-  const certificateId = document.location.href.split("/").pop();
+  // const certificateId = document.location.href.split("/").pop();
 
   useEffect(() => {
     const walletConnect = async () => {
@@ -163,4 +165,4 @@ const IPFS = () => {
   );
 };
 
-export default IPFS;
+export default CertificatesData;

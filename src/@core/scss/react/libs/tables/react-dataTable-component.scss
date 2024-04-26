@@ -1,10 +1,6 @@
 @import '../../../base/bootstrap-extended/include';
 @import '../../../base/components/include';
 
-.react-dataTable{
-  min-height: 400px !important;
-}
-
 .react-dataTable {
   border-radius: 0;
   .rdt_TableHead {
@@ -131,7 +127,6 @@
         }
       }
     }
-
     .rdt_TableBody {
       .expandable-content {
         background-color: $theme-dark-table-bg;

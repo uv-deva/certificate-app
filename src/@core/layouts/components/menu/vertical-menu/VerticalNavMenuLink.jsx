@@ -37,7 +37,7 @@ const VerticalNavMenuLink = ({
 
   // ** To match path
   const match = matchPath({
-    path: `${item.navLink}/:param`,
+    path: `${item.navLink}`,
     exact: true,
   }, currentURL.toString())
 
@@ -65,12 +65,23 @@ const VerticalNavMenuLink = ({
 
   // ** Checks url & updates active item
   useEffect(() => {
+    console.log("location", currentActiveItem)
     if (currentActiveItem !== null) {
       setActiveItem(currentActiveItem)
       const arr = searchParents(navigation, currentURL)
       setGroupActive([...arr])
     }
   }, [location])
+
+  const funIsActive = (match, location) => {
+      if (!match) {
+        return false
+      }
+
+      if (match.pathname && match.pathname !== '' && match.pathname === item.navLink) {
+        currentActiveItem = item.navLink
+      }
+  }
 
   return ability.can('view', item.permissionKey) ? (
     <li
@@ -90,15 +101,7 @@ const VerticalNavMenuLink = ({
             }
           : {
               to: item.navLink || '/',
-              isactive: (match, location) => {
-                if (!match) {
-                  return false
-                }
-
-                if (match.url && match.url !== '' && match.url === item.navLink) {
-                  currentActiveItem = item.navLink
-                }
-              }
+              isActive: funIsActive(match, location)
             })}
         /*eslint-enable */
         onClick={e => {
