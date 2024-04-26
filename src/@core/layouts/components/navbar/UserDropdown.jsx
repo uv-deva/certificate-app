@@ -14,9 +14,8 @@ import { doLogout } from '@store/actions/auth'
 
 // ** Third Party Components
 import {useIntl} from 'react-intl'
-import { UncontrolledDropdown, DropdownToggle, DropdownItem } from 'reactstrap'
+import { UncontrolledDropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap'
 import { Settings, Power, HelpCircle } from 'react-feather'
-import { DropdownMenu } from 'react-bootstrap';
 
 
 // ** Default Avatar Image
@@ -36,7 +35,7 @@ const UserDropdown = () => {
 
   return (
     <UncontrolledDropdown tag='li' className='dropdown-user nav-item'>
-      <DropdownToggle href='/' tag='a' className='nav-link dropdown-user-link' onClick={e => e.preventDefault()}>
+      <DropdownToggle href='/' tag='a' className='nav-link dropdown-user-link' onClick={e => e.preventDefault()} caret>
         <div className='user-nav d-sm-flex d-none'>
           <span className='user-name font-weight-bold'>{(userData && userData['username']) || 'unknown'}</span>
           <span className='user-status'>{(userData && userData?.groups && userData?.groups[0]?.name) || 'unknown'}</span>

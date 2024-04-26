@@ -1,10 +1,10 @@
 // You can customize the template with the help of this file
-
+import logo from '@src/assets/images/logo/logo.png';
 //Template config options
 const themeConfig = {
   app: {
     appName: 'CERTIFICATIONPLATFORM',
-    appLogoImage: import('@src/assets/images/logo/logo.png').default
+    appLogoImage: logo
   },
   layout: {
     isRTL: false,

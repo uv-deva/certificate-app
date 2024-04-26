@@ -242,17 +242,17 @@ export function* addData(params) {
     for (let k in data) {
         console.log('here')
        
-        if (typeof data[k] !=="undefined" && data[k].toString.call(data[k]).slice(8, -1) === 'FileList') {
+        if (typeof data[k] !=="undefined" && data[k] !== null && data[k].toString.call(data[k]).slice(8, -1) === 'FileList') {
             for(const i in data[k]) {
                 if ( data[k][i].type)  formdata.append(k, data[k][i], data[k][i].name)
             }
         } 
-        else if (typeof data[k] !=="undefined" && data[k].length && data[k].map) {
+        else if (typeof data[k] !=="undefined" && data[k] !== null && data[k].length && data[k].map) {
             data[k].map((item) => {
                 formdata.append(k, item)
             })
         }
-        else if (typeof data[k] !=="undefined") formdata.append(k, data[k])
+        else if (typeof data[k] !=="undefined" && data[k] !== null) formdata.append(k, data[k])
     
     }
     /*eslint-enable */

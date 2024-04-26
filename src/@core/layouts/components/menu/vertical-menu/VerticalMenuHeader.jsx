@@ -39,6 +39,7 @@ const VerticalMenuHeader = props => {
       )
     }
   }
+  console.log("themeConfigthemeConfigthemeConfig", themeConfig)
 
   return (
     <div className='navbar-header'>

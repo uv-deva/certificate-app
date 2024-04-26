@@ -259,7 +259,6 @@ console.log(data)
           data={data}
           onSort={onSort}
           sortServer
-          style={{minHeight: '400px'}}
         />
       </Card>
       {modal()}

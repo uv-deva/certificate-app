@@ -39,53 +39,51 @@ const Avatar = forwardRef((props, ref) => {
   }
 
   return (
-    // <Tag
-    //   className={classnames('avatar', {
-    //     [className]: className,
-    //     [`bg-${color}`]: color,
-    //     [`avatar-${size}`]: size
-    //   })}
-    //   ref={ref}
-    //   {...rest}
-    // >
-    //   {img === false || img === undefined ? (
-    //     <span
-    //       className={classnames('avatar-content', {
-    //         'position-relative': badgeUp
-    //       })}
-    //       style={contentStyles}
-    //     >
-    //       {initials ? getInitials(content) : content}
+    <Tag
+      className={classnames('avatar', {
+        [className]: className,
+        [`bg-${color}`]: color,
+        [`avatar-${size}`]: size
+      })}
+      ref={ref}
+      {...rest}
+    >
+      {img === false || img === undefined ? (
+        <span
+          className={classnames('avatar-content', {
+            'position-relative': badgeUp
+          })}
+          style={contentStyles}
+        >
+          {initials ? getInitials(content) : content}
 
-    //       {icon ? icon : null}
-    //       {badgeUp ? (
-    //         <Badge color={badgeColor ? badgeColor : 'primary'} className='badge-sm badge-up' pill>
-    //           {badgeText ? badgeText : '0'}
-    //         </Badge>
-    //       ) : null}
-    //     </span>
-    //   ) : (
-    //     <img
-    //       className={classnames({
-    //         [imgClassName]: imgClassName
-    //       })}
-    //       src={img}
-    //       alt='avatarImg'
-    //       height={imgHeight && !size ? imgHeight : 32}
-    //       width={imgWidth && !size ? imgWidth : 32}
-    //     />
-    //   )}
-    //   {status ? (
-    //     <span
-    //       className={classnames({
-    //         [`avatar-status-${status}`]: status,
-    //         [`avatar-status-${size}`]: size
-    //       })}
-    //     ></span>
-    //   ) : null}
-    // </Tag>
-
-    <></>
+          {icon ? icon : null}
+          {badgeUp ? (
+            <Badge color={badgeColor ? badgeColor : 'primary'} className='badge-sm badge-up' pill>
+              {badgeText ? badgeText : '0'}
+            </Badge>
+          ) : null}
+        </span>
+      ) : (
+        <img
+          className={classnames({
+            [imgClassName]: imgClassName
+          })}
+          src={img}
+          alt='avatarImg'
+          height={imgHeight && !size ? imgHeight : 32}
+          width={imgWidth && !size ? imgWidth : 32}
+        />
+      )}
+      {status ? (
+        <span
+          className={classnames({
+            [`avatar-status-${status}`]: status,
+            [`avatar-status-${size}`]: size
+          })}
+        ></span>
+      ) : null}
+    </Tag>
   )
 })
 

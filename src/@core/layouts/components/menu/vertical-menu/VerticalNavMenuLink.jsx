@@ -90,7 +90,7 @@ const VerticalNavMenuLink = ({
             }
           : {
               to: item.navLink || '/',
-              isActive: (match, location) => {
+              isactive: (match, location) => {
                 if (!match) {
                   return false
                 }

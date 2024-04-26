@@ -26,4 +26,13 @@ export default defineConfig({
     // necessary for segment analytics lib to work
     global: {},
   },
+  css: {
+    // Configure CSS preprocessor (e.g., Sass)
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@src/assets/scss/variables/_variables.scss";@import "@styles/base/bootstrap-extended/_mixins.scss";`, // Import global variables file
+        includePaths: ['node_modules', '@assets'], // Include paths for Sass imports
+      },
+    },
+  },
 });
