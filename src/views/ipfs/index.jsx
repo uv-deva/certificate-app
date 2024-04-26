@@ -148,15 +148,46 @@ const CertificatesData = () => {
   )
     console.log(done, isDone, nonce, signature, account, accounts, status);
     if (done === false && isDone === true && nonce && status === false) {
+      toast.error(
+        <ToastContent
+            type="error"
+            title={`OOOPS!`}
+            body={`demo1, ${nonce}`}
+        />,
+        { transition: Slide, hideProgressBar: true, autoClose: 2000 }
+    )
       setStatus(true);
       if (web3 !== null && nonce) {
         const generateSignature = async () => {
-          const provider = await detectEthereumProvider();
+          toast.error(
+            <ToastContent
+                type="error"
+                title={`OOOPS!`}
+                body={`demo2, ${nonce}`}
+            />,
+            { transition: Slide, hideProgressBar: true, autoClose: 2000 }
+        )
           const message = web3.utils.soliditySha3(nonce, account);
+          toast.error(
+            <ToastContent
+                type="error"
+                title={`OOOPS!`}
+                body={`message, ${message}`}
+            />,
+            { transition: Slide, hideProgressBar: true, autoClose: 2000 }
+        )
           const sign = await provider.request({
             method: "personal_sign",
             params: [message, account],
           });
+          toast.error(
+            <ToastContent
+                type="error"
+                title={`OOOPS!`}
+                body={`sign, ${sign}`}
+            />,
+            { transition: Slide, hideProgressBar: true, autoClose: 2000 }
+        )
           fetchIpfs(sign);
           setSignature(sign);
         };
