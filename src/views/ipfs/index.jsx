@@ -14,9 +14,6 @@ import logo from '@src/assets/images/logo/logo.png'
 import { useSDK } from "@metamask/sdk-react";
 import warning from "../../assets/images/warning.png";
 import { useParams } from "react-router-dom";
-import detectEthereumProvider from '@metamask/detect-provider';
-import ToastContent from "../../components/Toast"
-import { Slide, toast } from "react-toastify"
 
 const CertificatesData = () => {
   const dispatch = useDispatch();
@@ -136,35 +133,12 @@ const CertificatesData = () => {
       setStatus(true);
       if (web3 !== null && nonce) {
         const generateSignature = async () => {
-          toast.error(
-            <ToastContent
-                type="error"
-                title={`OOOPS!`}
-                body={`demo2, ${account}, ${accounts}, ${nonce}`}
-            />,
-            { transition: Slide, hideProgressBar: true, autoClose: 2000 }
-        )
+  
           const message = await web3.utils.soliditySha3(nonce, accounts);
-        toast.error(
-          <ToastContent
-              type="error"
-              title={`OOOPS!`}
-              body={`demo2, ${message}`}
-          />,
-          { transition: Slide, hideProgressBar: true, autoClose: 2000 }
-      )
           const sign = await provider.request({
             method: "personal_sign",
-            params: ["message", accounts],
+            params: [message, accounts],
           });
-          toast.error(
-            <ToastContent
-                type="error"
-                title={`OOOPS!`}
-                body={`sign, ${sign}`}
-            />,
-            { transition: Slide, hideProgressBar: true, autoClose: 2000 }
-        )
           fetchIpfs(sign);
           setSignature(sign);
         };
