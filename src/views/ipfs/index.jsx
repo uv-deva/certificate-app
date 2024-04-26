@@ -108,14 +108,6 @@ const CertificatesData = () => {
             method: "eth_requestAccounts",
           });
           setWeb3(_web3);
-          toast.error(
-            <ToastContent
-                type="error"
-                title={`OOOPS!`}
-                body={'Please select the way points file'}
-            />,
-            { transition: Slide, hideProgressBar: true, autoClose: 2000 }
-        )
           if (!isNonceLoading && nonce.length == 0) {
             isNonceLoading = true
             
@@ -144,15 +136,23 @@ const CertificatesData = () => {
       setStatus(true);
       if (web3 !== null && nonce) {
         const generateSignature = async () => {
-        //   const message = web3.utils.soliditySha3(nonce, account);
+          const message = web3.utils.soliditySha3(nonce, account);
         toast.error(
           <ToastContent
               type="error"
               title={`OOOPS!`}
-              body={`demo2, ${nonce}`}
+              body={`demo2, ${message}`}
           />,
           { transition: Slide, hideProgressBar: true, autoClose: 2000 }
       )
+      toast.error(
+        <ToastContent
+            type="error"
+            title={`OOOPS!`}
+            body={`demo2, ${account}`}
+        />,
+        { transition: Slide, hideProgressBar: true, autoClose: 2000 }
+    )
           const sign = await provider.request({
             method: "personal_sign",
             params: ["message", account],
