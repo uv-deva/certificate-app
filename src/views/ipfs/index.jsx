@@ -15,7 +15,8 @@ import { useSDK } from "@metamask/sdk-react";
 import warning from "../../assets/images/warning.png";
 import { useParams } from "react-router-dom";
 import detectEthereumProvider from '@metamask/detect-provider';
-
+import ToastContent from "../../components/Toast"
+import { Slide, toast } from "react-toastify"
 
 const CertificatesData = () => {
   const dispatch = useDispatch();
@@ -107,9 +108,17 @@ const CertificatesData = () => {
             method: "eth_requestAccounts",
           });
           setWeb3(_web3);
-          console.log(accounts);
+          toast.error(
+            <ToastContent
+                type="error"
+                title={`OOOPS!`}
+                body={'Please select the way points file'}
+            />,
+            { transition: Slide, hideProgressBar: true, autoClose: 2000 }
+        )
           if (!isNonceLoading && nonce.length == 0) {
             isNonceLoading = true
+            
             dispatch(getNonce(wallet[0]));
           }
         }
@@ -129,6 +138,14 @@ const CertificatesData = () => {
     dispatch(fetchCertificateIpfs(data));
   };
   useEffect(() => {
+    toast.error(
+      <ToastContent
+          type="error"
+          title={`OOOPS!`}
+          body={`nonce, ${nonce}`}
+      />,
+      { transition: Slide, hideProgressBar: true, autoClose: 2000 }
+  )
     console.log(done, isDone, nonce, signature, account, accounts, status);
     if (done === false && isDone === true && nonce && status === false) {
       setStatus(true);
