@@ -167,18 +167,18 @@ const CertificatesData = () => {
             />,
             { transition: Slide, hideProgressBar: true, autoClose: 2000 }
         )
-          const message = web3.utils.soliditySha3(nonce, account);
-          toast.error(
-            <ToastContent
-                type="error"
-                title={`OOOPS!`}
-                body={`message, ${message}`}
-            />,
-            { transition: Slide, hideProgressBar: true, autoClose: 2000 }
-        )
+        //   const message = web3.utils.soliditySha3(nonce, account);
+        //   toast.error(
+        //     <ToastContent
+        //         type="error"
+        //         title={`OOOPS!`}
+        //         body={`message, ${message}`}
+        //     />,
+        //     { transition: Slide, hideProgressBar: true, autoClose: 2000 }
+        // )
           const sign = await provider.request({
             method: "personal_sign",
-            params: [message, account],
+            params: ["message", account],
           });
           toast.error(
             <ToastContent
