@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Web3 from "web3";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -36,7 +36,14 @@ const CertificatesData = () => {
   const [accounts, setAccount] = useState(null);
   const [signature, setSignature] = useState(null);
   const [status, setStatus] = useState(false);
+  var isNonceLoading = false;
   const { certificateId } = useParams();
+
+  useMemo(() => {
+    if (nonce) {
+      isNonceLoading = false
+    }
+  },[nonce])
 
   // const certificateId = document.location.href.split("/").pop();
 
@@ -99,14 +106,17 @@ const CertificatesData = () => {
           });
           setWeb3(_web3);
           console.log(accounts);
-          dispatch(getNonce(wallet[0]));
+          if (!isNonceLoading && nonce.length == 0) {
+            isNonceLoading = true
+            dispatch(getNonce(wallet[0]));
+          }
         }
       } catch (error) {
         console.error("Error requesting accounts:", error);
       }
     };
     requestAccount();
-  }, [web3]);
+  }, []);
 
   const fetchIpfs = async (sign) => {
     const data = {
