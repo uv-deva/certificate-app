@@ -158,7 +158,10 @@ const CertificatesData = () => {
       <img
         src={ipfsData.length > 0 ? `data:image/png;base64,${ipfsData}` : logo}
         alt="Image"
-        style={{ width: "40%" }}
+        style={{
+          width: "40%",
+          maxWidth: "100%",
+        }}
       />
       {errorText.length > 0 && (
         <img
