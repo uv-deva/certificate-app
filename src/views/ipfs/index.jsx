@@ -165,13 +165,7 @@ const CertificatesData = () => {
         <img
           src={warning}
           alt="Image"
-          style={{
-            position: "absolute",
-            top: "20%",
-            left: "25%",
-            width: "50%",
-            height: "80%",
-          }}
+          className="warning-image"
         />
       )}
     </div>
