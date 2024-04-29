@@ -1,3 +1,15 @@
 .auth-login-form .mb-3 {
 	margin-bottom: 1rem !important
 }
+
+.ipfs-image {
+  width: 210mm;
+  height: 240mm;
+}
+
+@media (max-width: 768px) {
+  .ipfs-image {
+    width: 100%;
+    height: auto;
+  }
+}
