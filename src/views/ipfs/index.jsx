@@ -14,6 +14,7 @@ import logo from '@src/assets/images/logo/logo.png'
 import { useSDK } from "@metamask/sdk-react";
 import warning from "../../assets/images/warning.png";
 import { useParams } from "react-router-dom";
+import "../../@core/scss/base/custom.scss"
 
 const CertificatesData = () => {
   const dispatch = useDispatch();
@@ -158,10 +159,7 @@ const CertificatesData = () => {
       <img
         src={ipfsData.length > 0 ? `data:image/png;base64,${ipfsData}` : logo}
         alt="Image"
-        style={{
-          width: "40%",
-          maxWidth: "100%",
-        }}
+        className={ipfsData.length > 0 ?"ipfs-image" : ""}
       />
       {errorText.length > 0 && (
         <img
