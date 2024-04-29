@@ -139,7 +139,7 @@ const Certificate = () => {
             data={data}
             columns={columns}  
             setCurrentPage={setCurrentPage}
-            totalRows={totalRows}
+            totalRows={""}
             onFilter={onTableFilter}
             filters={filters}
             modal={renderModal}
